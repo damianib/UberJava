@@ -11,7 +11,7 @@ public class myUber {
 		return "low";
 	}
 	
-	public double rideCost(String rideType, double length, String traffic) {
+	public double rideCost(Ride ride, double length, String traffic) {
 		
 		return 1.2;
 	}

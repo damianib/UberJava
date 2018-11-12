@@ -2,11 +2,26 @@ package myUber;
 
 public class Driver {
 	
-	public String name;
-	public String surname;
-	public int id;
-	public String state;
+	protected String name;
+	protected String surname;
+	protected int id;
+	protected String state;
+	protected double evaluation;
+	protected int nbEvaluations;
 	
+	
+	public int getNbEvaluations() {
+		return nbEvaluations;
+	}
+	public void setNbEvaluations(int nbEvaluations) {
+		this.nbEvaluations = nbEvaluations;
+	}
+	public double getEvaluation() {
+		return evaluation;
+	}
+	public void setEvaluation(double evaluation) {
+		this.evaluation = evaluation;
+	}
 	public String getName() {
 		return name;
 	}
@@ -32,6 +47,11 @@ public class Driver {
 		this.state = state;
 	}
 	
+	public void ajouterEval(int stars) {
+		this.evaluation = (this.nbEvaluations*this.evaluation+stars)/(this.nbEvaluations+1);
+		this.nbEvaluations ++;
+	}
+	
 	public Driver(String name, String surname, int id, String state) {
 		super();
 		this.name = name;
@@ -40,6 +60,4 @@ public class Driver {
 		this.state = state;
 	}
 	
-	
-
 }
