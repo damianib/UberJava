@@ -55,7 +55,8 @@ public class MyUber {
 		
 		UberX ride = new UberX("status");
 		double length = 15;
-		String traffic = "medium";
+		String traffic = getTraffic(12);
+		System.out.println(traffic);
 		System.out.println(rate(ride, length, traffic));
 	}
 
