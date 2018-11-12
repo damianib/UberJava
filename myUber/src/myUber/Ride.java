@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public abstract class Ride {
 	
 	protected String status;
-	protected ArrayList<Double> basicRates;
-	protected ArrayList<Double> trafficRates;
+	protected ArrayList<Double> basicRates = new ArrayList<Double>();
+	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	
 	
 	public double basicRate(double length) {
@@ -39,5 +39,12 @@ public abstract class Ride {
 		}
 		
 	}
+
+	public Ride(String status) {
+		super();
+		this.status = status;
+	}
+	
+	
 
 }
