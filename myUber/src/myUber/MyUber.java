@@ -1,6 +1,10 @@
 package myUber;
 
+import java.util.ArrayList;
+
 public class MyUber {
+	
+	protected ArrayList bookOfRides = new ArrayList();
 	
 	public static String getTraffic(int heure) {
 		
@@ -55,7 +59,8 @@ public class MyUber {
 		
 		UberX ride = new UberX("status");
 		double length = 15;
-		String traffic = getTraffic(12);
+		int heure = 12;
+		String traffic = getTraffic(heure);
 		System.out.println(traffic);
 		System.out.println(rate(ride, length, traffic));
 	}
