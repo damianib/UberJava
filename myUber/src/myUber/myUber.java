@@ -1,23 +1,16 @@
 package myUber;
 
-import java.util.ArrayList;
-
-public class myUber {
+public class MyUber {
 	
-	protected ArrayList<String> bookOfRides;
-	
-	public String getTraffic(int heure) {
+	public static double rate(Ride ride, double length, String traffic) {
 		
-		return "low";
-	}
-	
-	public double rideCost(Ride ride, double length, String traffic) {
+		return ride.basicRate(length)*length*ride.trafficRate(traffic);
 		
-		return 1.2;
 	}
 	
 	public static void main(String[] args) {
-		
+		Standard maVoiture = new Standard(42.42, "voiture42");
+		System.out.println(maVoiture.getNbrSeat());
 	}
 
 }
