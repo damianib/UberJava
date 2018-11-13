@@ -1,5 +1,9 @@
 package myUber;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -8,9 +12,9 @@ public class MyUber {
 	
 	protected ArrayList bookOfRides = new ArrayList();
 	protected static int NombreDeClients = 0;
+	File ListeDesClients = new File("C://Users/matth/Desktop/rgergeg/UberJava/Liste des Clients.txt");
 	
 	
-
 	
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
