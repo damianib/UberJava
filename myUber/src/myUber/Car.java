@@ -2,13 +2,15 @@ package myUber;
 
 abstract class Car {
 	
+	
+	///les attributs des voitures
 	double carGPS;
 	String type;
 	String carID;
 	int nbrSeat;
 	
 	
-	
+	///le constructeur abstrait
 	public Car(double carGPS, String type, String carID, int nbrSeat) {
 		this.carGPS = carGPS;
 		this.type = type;
@@ -19,7 +21,7 @@ abstract class Car {
 	
 	
 
-
+///les fonctions pour récuperer et modifier les attributs
 	public double getCarGPS() {
 		return carGPS;
 	}
