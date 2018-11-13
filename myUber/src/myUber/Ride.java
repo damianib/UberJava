@@ -8,7 +8,7 @@ public abstract class Ride {
 	protected ArrayList<Double> basicRates = new ArrayList<Double>();
 	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	
-	
+	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
 	public double basicRate(double length) {
 		
 		if (length < 5) {
@@ -26,6 +26,7 @@ public abstract class Ride {
 		
 	}
 	
+	/// fonction qui renvoie le coefficient adapté au traffic présent
 	public double trafficRate(String traffic) {
 		
 		if (traffic == "low") {
@@ -40,6 +41,8 @@ public abstract class Ride {
 		
 	}
 
+	
+	/// Constructor
 	public Ride(String status) {
 		super();
 		this.status = status;

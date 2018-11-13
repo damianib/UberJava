@@ -1,20 +1,26 @@
 package myUber;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MyUber {
 	
 	protected ArrayList bookOfRides = new ArrayList();
 	
 	
-	/// juste pour faire le test
 	
-	public static String getTraffic(int heure) {
+	///fonction renvoyant l'état du traffic
+	public static String getTraffic() {
+		
+		///on récupère l'heure
+		Calendar cal = Calendar.getInstance();
+        int heure = cal.get(Calendar.HOUR_OF_DAY);
 		
 		double plow;
 		double pmedium;
 		double phigh;
 		
+		///en fonction de l'heure on attribut les coeff de proba
 		if (heure>22 || heure<7) {
 			plow = 0.95;
 			pmedium = 0.04;
@@ -36,6 +42,7 @@ public class MyUber {
 			phigh = 0.95;
 		}
 		
+		/// on tire un nombre entre 0 et 1 et on annonce le résultat
 		double tirage = Math.random();
 		
 		if (tirage < plow) {
@@ -49,6 +56,9 @@ public class MyUber {
 		}
 		
 	}
+
+	
+	
 	
 	public static double rate(Ride ride, double length, String traffic) {
 		
@@ -62,8 +72,7 @@ public class MyUber {
 		
 		UberX ride = new UberX("status");
 		double length = 15;
-		int heure = 12;
-		String traffic = getTraffic(heure);
+		String traffic = getTraffic();
 		System.out.println(traffic);
 		System.out.println(rate(ride, length, traffic));
 	}
