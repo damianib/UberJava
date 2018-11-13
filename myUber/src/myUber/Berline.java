@@ -13,7 +13,7 @@ public class Berline extends Car {
 	
 	/// constucteur, via super
 	public Berline(double GPS, String ID) {
-		super (GPS, type, ID, nbrSeat);
+		super (type, ID, nbrSeat);
 	}
 	
 	

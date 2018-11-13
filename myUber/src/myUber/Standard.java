@@ -13,7 +13,7 @@ public class Standard extends Car {
 	
 	/// Constucteur
 	public Standard(double GPS, String ID) {
-		super (GPS, type, ID, nbrSeat);
+		super (type, ID, nbrSeat);
 	}
 
 	

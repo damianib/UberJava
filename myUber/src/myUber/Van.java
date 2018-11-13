@@ -12,7 +12,7 @@ public class Van extends Car {
 	
 	///le constucteur, via le super
 	public Van(double GPS, String ID) {
-		super (GPS, type, ID, nbrSeat);
+		super (type, ID, nbrSeat);
 	}
 	
 	

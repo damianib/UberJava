@@ -9,6 +9,7 @@ public class Customer {
 	protected int id;
 	protected ArrayList<Double> gps;
 	protected String creditCard;
+	ArrayList<String> MailBox = new ArrayList<String>();
 	
 	public String getName() {
 		return name;
@@ -39,6 +40,10 @@ public class Customer {
 	}
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
+	}
+	
+	public void sendMessage(String message) {
+		this.MailBox.add(message);
 	}
 	
 	public Customer(String name, String surname, int id, ArrayList<Double> gps, String creditCard) {

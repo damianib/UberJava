@@ -2,12 +2,15 @@ package myUber;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class MyUber {
 	
 	protected ArrayList bookOfRides = new ArrayList();
+	protected static int NombreDeClients = 0;
 	
 	
+
 	
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
@@ -57,24 +60,45 @@ public class MyUber {
 		
 	}
 
+	///fonction calculant une distance
+	public static Double getDistance(ArrayList<Double> gps1, ArrayList<Double> gps2) {
+		double x = gps1.get(0) - gps2.get(0);
+		double y = gps1.get(1) - gps2.get(1);
+		return (Math.sqrt(x*x + y*y));
+	}
 	
-	
-	
+	/// G pa kompri
 	public static double rate(Ride ride, double length, String traffic) {
-		
 		return ride.basicRate(length)*length*ride.trafficRate(traffic);
 		
 	}
 	
 	public static void main(String[] args) {
-		Standard maVoiture = new Standard(42.42, "voiture42");
-		System.out.println(maVoiture.getNbrSeat());
+		Scanner sc = new Scanner(System.in);
+		System.out.println("quel est votre identifiant client ?");
+		String idDuClientSTR =sc.nextLine();
+		int idDuClient = Integer.parseInt(idDuClientSTR);
 		
-		UberX ride = new UberX("status");
-		double length = 15;
-		String traffic = getTraffic();
-		System.out.println(traffic);
-		System.out.println(rate(ride, length, traffic));
-	}
+		if ( idDuClient > NombreDeClients) {
+			System.out.println("vous etes un nouveau client ! Nous allons ensemble vous créer un compte");
+			System.out.println("entrez votre nom :");
+			String NewName = sc.nextLine();
+			System.out.println("entrez votre surnom :");
+			String NewSurname = sc.nextLine();
+			System.out.println("entrez votre carte de crédit. Elle ne sera jamais débitée sans avoir votre confirmation :");
+			String NewCard = sc.nextLine();
+			System.out.println("Votre profil est maintenant créé ! Vous disposez également d'une MailBox où vous recevrez tous nos messages !");
+			
+			int NewID = ( NombreDeClients + 1);
+			NombreDeClients++;
+			ArrayList<Double> NewGps = new ArrayList<Double>();
+			NewGps.add(0.);
+			NewGps.add(0.);
+			
+			
+			Customer s = new Customer (NewName, NewSurname, NewID, NewGps, NewCard);
+			
+		}
+		
 
 }

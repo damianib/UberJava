@@ -16,30 +16,35 @@ public class Driver {
 	public void setNbEvaluations(int nbEvaluations) {
 		this.nbEvaluations = nbEvaluations;
 	}
+	
 	public double getEvaluation() {
 		return evaluation;
 	}
 	public void setEvaluation(double evaluation) {
 		this.evaluation = evaluation;
 	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getSurname() {
 		return surname;
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getState() {
 		return state;
 	}
