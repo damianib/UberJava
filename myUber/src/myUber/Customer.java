@@ -46,7 +46,7 @@ public class Customer {
 		this.MailBox.add(message);
 	}
 	
-	public Customer(String name, String surname, int id, ArrayList<Double> gps, String creditCard) {
+	public Customer(String name, String surname, int id, GPS gps, String creditCard) {
 		super();
 		this.name = name;
 		this.surname = surname;
