@@ -7,7 +7,7 @@ public class Customer {
 	protected String name;
 	protected String surname;
 	protected int id;
-	protected ArrayList<Double> gps;
+	protected GPS gps;
 	protected String creditCard;
 	ArrayList<String> MailBox = new ArrayList<String>();
 	
@@ -29,10 +29,10 @@ public class Customer {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public ArrayList<Double> getGps() {
+	public GPS getGps() {
 		return gps;
 	}
-	public void setGps(ArrayList<Double> gps) {
+	public void setGps(GPS gps) {
 		this.gps = gps;
 	}
 	public String getCreditCard() {
