@@ -8,6 +8,7 @@ public abstract class Ride {
 	protected ArrayList<Double> basicRates = new ArrayList<Double>();
 	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	
+	
 	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
 	public double basicRate(double length) {
 		
