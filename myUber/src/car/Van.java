@@ -10,6 +10,7 @@ public class Van extends Car {
 	static String type = "Van";
 	String carID;
 	static int nbrSeat = 6;
+	ArrayList<String> Conducteurs = new ArrayList<String>();
 	
 	
 	///le constucteur, via le super

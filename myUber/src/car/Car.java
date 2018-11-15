@@ -24,6 +24,9 @@ abstract class Car {
 	
 
 ///les fonctions pour récuperer et modifier les attributs
+	public ArrayList<String> getDrivers (String str) {
+		return Conducteurs;
+	}
 	public ArrayList<Double> getCarGPS() {
 		return carGPS;
 	}
