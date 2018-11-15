@@ -2,11 +2,13 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.GPS;
+
 public class Berline extends Car {
 
 	
 	/// Attributs de la berline
-	ArrayList<Double> carGPS = new ArrayList <Double>();
+	GPS carGPS = new GPS(0. ,0.);
 	static String type = "berline";
 	String carID;
 	static int nbrSeat = 4;

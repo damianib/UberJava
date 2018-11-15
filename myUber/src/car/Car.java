@@ -2,11 +2,13 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.GPS;
+
 abstract class Car {
 	
 	
 	///les attributs des voitures
-	ArrayList <Double> carGPS = new ArrayList<Double>();
+	GPS carGPS = new GPS(0.,0.);
 	String type;
 	String carID;
 	int nbrSeat;
@@ -27,10 +29,10 @@ abstract class Car {
 	public ArrayList<String> getDrivers (String str) {
 		return Conducteurs;
 	}
-	public ArrayList<Double> getCarGPS() {
+	public GPS getCarGPS() {
 		return carGPS;
 	}
-	public void setCarGPS(ArrayList<Double> carGPS) {
+	public void setCarGPS(GPS carGPS) {
 		this.carGPS = carGPS;
 	}
 	public String getType() {

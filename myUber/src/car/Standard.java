@@ -2,11 +2,13 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.GPS;
+
 public class Standard extends Car {
 
 	
 	/// Attributs de la Standart
-	ArrayList<Double> carGPS = new ArrayList<Double>();
+	GPS carGPS = new GPS(0. ,0.);
 	static String type = "standard";
 	String carID;
 	static int nbrSeat = 4;
