@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import rides.Ride;
+
 
 public class MyUber {
 	
@@ -64,12 +66,10 @@ public class MyUber {
 		}
 		
 	}
-
-
 	
 	/// G pa kompri
-	public static double rate(Ride ride, double length, String traffic) {
-		return ride.basicRate(length)*length*ride.trafficRate(traffic);
+	public static double rate(Ride ride, String traffic) {
+		return ride.basicRate()*ride.getLength()*ride.trafficRate(traffic);
 		
 	}
 	
