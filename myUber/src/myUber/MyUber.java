@@ -65,10 +65,7 @@ public class MyUber {
 		
 	}
 
-	///fonction calculant une distance
-	public static Double getDistance(ArrayList<Double> gps1, ArrayList<Double> gps2) {
-		
-	}
+
 	
 	/// G pa kompri
 	public static double rate(Ride ride, double length, String traffic) {
@@ -79,9 +76,9 @@ public class MyUber {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Customer Client = recupererOuCreerClient(sc);
-		ArrayList<Double> Depart = GPSDepart(sc);
-		ArrayList<Double> Destination = GPSArrivee(sc);
-		double distance = getDistance (Depart, Destination);
+		GPS Depart = GPSDepart(sc);
+		GPS Destination = GPSArrivee(sc);
+		double distance = GPS.distance (Depart, Destination);
 		String traffic = getTraffic();
 		String TypeDeTrajet = demanderTrajet(distance, traffic, sc);
 		int nbrPlaceVoulues = demanderNbrPlaces(TypeDeTrajet, sc);
@@ -126,7 +123,7 @@ public class MyUber {
 		}
 	}
 
-	public static ArrayList<Double> GPSDepart(Scanner sc) {
+	public static GPS GPSDepart(Scanner sc) {
 		System.out.println("où êtes vous ? Rentrez vos coordonnées GPS");
 		System.out.println("en commençant par x");
 		String X = sc.nextLine();
@@ -134,13 +131,10 @@ public class MyUber {
 		System.out.println("puis maintenant y");
 		String Y = sc.nextLine();
 		double newY = Double.parseDouble(Y);
-		ArrayList<Double> Depart = new ArrayList<Double>();
-		Depart.add(newX);
-		Depart.add(newY);
-		return Depart;
+		return new GPS(newX, newY);
 	}
 	
-	public static ArrayList<Double> GPSArrivee(Scanner sc) {
+	public static GPS GPSArrivee(Scanner sc) {
 		System.out.println("où voulez vous aller ? Rentrez les coordonnées GPS");
 		System.out.println("en commençant par x");
 		String DX = sc.nextLine();
@@ -148,10 +142,7 @@ public class MyUber {
 		System.out.println("puis maintenant y");
 		String DY = sc.nextLine();
 		double DestY = Double.parseDouble(DY);
-		ArrayList<Double> Destination = new ArrayList<Double>();
-		Destination.add(DestX);
-		Destination.add(DestY);
-		return Destination;
+		return new GPS(DestX, DestY);
 	}
 
 	public static String demanderTrajet(double distance, String traffic, Scanner sc) {
