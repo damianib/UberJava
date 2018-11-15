@@ -1,4 +1,4 @@
-package myUber;
+package rides;
 
 import java.util.ArrayList;
 

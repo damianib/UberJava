@@ -1,4 +1,4 @@
-package myUber;
+package rides;
 
 public class UberVan extends Ride {
 

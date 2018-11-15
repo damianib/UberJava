@@ -1,10 +1,12 @@
-package myUber;
+package car;
+
+import java.util.ArrayList;
 
 public class Standard extends Car {
 
 	
 	/// Attributs de la Standart
-	double carGPS;
+	ArrayList<Double> carGPS = new ArrayList<Double>();
 	static String type = "standard";
 	String carID;
 	static int nbrSeat = 4;
@@ -12,7 +14,7 @@ public class Standard extends Car {
 	
 	
 	/// Constucteur
-	public Standard(double GPS, String ID) {
+	public Standard(String ID) {
 		super (type, ID, nbrSeat);
 	}
 
