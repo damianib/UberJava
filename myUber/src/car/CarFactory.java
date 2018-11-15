@@ -2,15 +2,19 @@ package car;
 
 public class CarFactory {
 	
-	public Car createCar(String CarType) {
+	public Car createCar(String CarType, int nbrVoitureDeCeType) {
+		
+		String str = Integer.toString(nbrVoitureDeCeType +1);
+		String ID = CarType + str;
+		
 		if (CarType == "Van") {
-			return Van();
+			return new Van(ID);
 		}
 		else if (CarType == "Standard") {
-			return Standart();
+			return new Standard(ID);
 		}
 		else if (CarType == "Berline") {
-			return Berline();
+			return new Berline(ID);
 		}
 		return null;
 	}
