@@ -67,9 +67,7 @@ public class MyUber {
 
 	///fonction calculant une distance
 	public static Double getDistance(ArrayList<Double> gps1, ArrayList<Double> gps2) {
-		double x = gps1.get(0) - gps2.get(0);
-		double y = gps1.get(1) - gps2.get(1);
-		return (Math.sqrt(x*x + y*y));
+		
 	}
 	
 	/// G pa kompri
