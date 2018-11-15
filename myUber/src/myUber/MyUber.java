@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
-import rides.Ride;
 
 public class MyUber {
 	
