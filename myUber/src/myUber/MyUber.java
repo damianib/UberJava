@@ -18,11 +18,22 @@ public class MyUber {
 	
 	
 	public static void main(String[] args) {
+		DriverFactory.createDriver("pillot", "wolpertinger");
+		DriverFactory.createDriver("benoit", "rainbow");
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
 		CarFactory.createCar("Standard");
-		CarFactory.createCar("Standard");
-		CarFactory.createCar("Standard");
-		ArrayList<Car> test = CarFactory.getListOfCars();
-		System.out.println(test);
+		CarFactory.createCar("Berline");
+		CarFactory.createCar("Van");
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		Car stand = listOfCars.get(0);
+		Car berl = listOfCars.get(1);
+		Car van = listOfCars.get(2);
+		stand.addDriver(listOfDrivers.get(0));
+		stand.addDriver(listOfDrivers.get(1));
+		berl.addDriver(listOfDrivers.get(0));
+		van.addDriver(listOfDrivers.get(1));
+		
+		
 		
 		
 	}
@@ -32,9 +43,9 @@ public class MyUber {
 		car.setCarStatus("non-available");
 		driver.setState("on-a-ride");
 		ride.setStatus("ongoing");
-		long time = ride.getDuration();
+		double time = ride.getDuration();
 		try {
-			Thread.sleep(time*1000);
+			Thread.sleep((long) (time*1000));
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
