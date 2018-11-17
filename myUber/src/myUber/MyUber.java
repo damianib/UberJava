@@ -8,11 +8,14 @@ import java.util.Iterator;
 import rides.Ride;
 import rides.RideFactory;
 
+import car.Car;
 
 public class MyUber {
 	
-	protected ArrayList bookOfRides = new ArrayList();
+	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
 	protected static int NombreDeClients = 0;
+	protected ArrayList<Car> listOfCars = new ArrayList<Car>();
+	protected ArrayList<Driver> listofDrivers = new ArrayList<Driver>();
 	
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
@@ -76,6 +79,7 @@ public class MyUber {
 		
 	}
 	
+	
 	public static void main(String[] args) {
 		
 		GPS depart = new GPS(0, 0);
@@ -83,5 +87,6 @@ public class MyUber {
 		genPrice(depart, arrivee);
 		
 	}
+	
 	
 }
