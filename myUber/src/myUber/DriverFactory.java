@@ -15,7 +15,7 @@ public class DriverFactory {
 		listOfDrivers.add(driver);
 	}	
 	
-	public ArrayList<Driver> getListOfDrivers() {
+	public static ArrayList<Driver> getListOfDrivers() {
 		return listOfDrivers;
 	}
 	public void supprimerDriver (Driver driver) {

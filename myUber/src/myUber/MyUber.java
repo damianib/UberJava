@@ -18,14 +18,36 @@ public class MyUber {
 	
 	
 	public static void main(String[] args) {
+		DriverFactory.createDriver("pillot", "wolpertinger");
+		DriverFactory.createDriver("benoit", "rainbow");
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
 		CarFactory.createCar("Standard");
-		CarFactory.createCar("Standard");
-		CarFactory.createCar("Standard");
-		ArrayList<Car> test = CarFactory.getListOfCars();
-		System.out.println(test);
+		CarFactory.createCar("Berline");
+		CarFactory.createCar("Van");
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		Car stand = listOfCars.get(0);
+		Car berl = listOfCars.get(1);
+		Car van = listOfCars.get(2);
+		stand.addDriver(listOfDrivers.get(0));
+		stand.addDriver(listOfDrivers.get(1));
+		berl.addDriver(listOfDrivers.get(0));
+		van.addDriver(listOfDrivers.get(1));
+		
+		
 		
 		
 	}
+	
+	///fonction pour commander un ride
+	public void commande(String rideType, GPS gps) {
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		Car car = trouverVoiture(rideType, gps, listOfCars);
+		
+			
+		}
+	}
+	
+	public Driver trouverConducteurs
 	
 	/// une fois le passager embarqué
 	public void faireUnRide(Ride ride, Car car, Driver driver) {

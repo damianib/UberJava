@@ -6,7 +6,7 @@ public class Customer {
 	
 	protected String name;
 	protected String surname;
-	protected int id;
+	protected String id;
 	protected GPS gps;
 	protected String creditCard;
 	ArrayList<String> MailBox = new ArrayList<String>();
@@ -23,10 +23,10 @@ public class Customer {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public GPS getGps() {
@@ -46,12 +46,11 @@ public class Customer {
 		this.MailBox.add(message);
 	}
 	
-	public Customer(String name, String surname, int id, GPS gps, String creditCard) {
+	public Customer(String name, String surname, String id, String creditCard) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.id = id;
-		this.gps = gps;
 		this.creditCard = creditCard;
 	}
 
