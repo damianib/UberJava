@@ -9,7 +9,7 @@ public abstract class Car {
 	
 	
 	///les attributs des voitures
-	GPS carGPS = new GPS(0.,0.);
+	GPS carGPS;
 	String type;
 	String carID;
 	int nbrSeat;
@@ -18,10 +18,11 @@ public abstract class Car {
 	
 	
 	///le constructeur abstrait
-	public Car(String type, String carID, int nbrSeat) {
+	public Car(String type, String carID, int nbrSeat, GPS carGPS) {
 		this.type = type;
 		this.carID = carID;
 		this.nbrSeat = nbrSeat;
+		this.carGPS = carGPS;
 	}
 	
 	

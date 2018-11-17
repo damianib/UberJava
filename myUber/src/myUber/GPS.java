@@ -29,12 +29,19 @@ public class GPS {
 		Y = y;
 	}
 	
+	//renvoie la distance entre deux points
 	public static double distance(GPS a, GPS b) {
 		double dx = a.getX() - b.getX();
 		double dy = a.getY() - b.getY();
 		return (Math.sqrt(dx*dx + dy*dy));
 	}
 	
+	//renvoie un GPS random
+	public static GPS randGPS(double maxX, double maxY) {
+		return new GPS(Math.random()*maxX, Math.random()*maxY);
+	}
+	
+	//renvoie le trajet optimal pour un uberPool
 	public static ArrayList<GPS> trajetPool(ArrayList<GPS> pickup, ArrayList<GPS> dropout, GPS position){
 		
 		ArrayList<GPS> trajet = new ArrayList<GPS>();

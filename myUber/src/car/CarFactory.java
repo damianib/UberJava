@@ -2,6 +2,8 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.GPS;
+
 public class CarFactory {
 	
 	static int compteurStandard = 0;
@@ -9,7 +11,7 @@ public class CarFactory {
 	static int compteurBerline = 0;
 	static ArrayList<Car> listOfCars = new ArrayList<Car>();
 	
-	public static void createCar(String CarType) {
+	public static void createCar(String CarType, GPS carGPS) {
 		
 		if (CarType == "Van") {
 			compteurVan ++;

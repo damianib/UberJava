@@ -46,12 +46,13 @@ public class Customer {
 		this.MailBox.add(message);
 	}
 	
-	public Customer(String name, String surname, String id, String creditCard) {
+	public Customer(String name, String surname, String id, String creditCard, GPS gps) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.id = id;
 		this.creditCard = creditCard;
+		this.gps = gps;
 	}
 
 }
