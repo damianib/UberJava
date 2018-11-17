@@ -46,6 +46,13 @@ public abstract class Ride {
 		}
 		
 	}
+	
+	
+	public double rate(String traffic) {
+		
+		return this.basicRate()*this.length*this.trafficRate(traffic);
+		
+	}
 
 	
 	/// Constructor

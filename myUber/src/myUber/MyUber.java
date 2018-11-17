@@ -64,14 +64,4 @@ public class MyUber {
 		
 	}
 	
-	/// G pa kompri
-	public static double rate(Ride ride, String traffic) {
-		return ride.basicRate()*ride.getLength()*ride.trafficRate(traffic);
-		
-	}
-	
-
-	
-	
-	
 }
