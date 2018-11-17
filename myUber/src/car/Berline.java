@@ -2,6 +2,7 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.Driver;
 import myUber.GPS;
 
 public class Berline extends Car {
@@ -12,7 +13,7 @@ public class Berline extends Car {
 	static String type = "berline";
 	String carID;
 	static int nbrSeat = 4;
-	ArrayList<String> Conducteurs = new ArrayList<String>();
+	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	
 	
 	

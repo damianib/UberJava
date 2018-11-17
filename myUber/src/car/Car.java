@@ -2,9 +2,10 @@ package car;
 
 import java.util.ArrayList;
 
+import myUber.Driver;
 import myUber.GPS;
 
-abstract class Car {
+public abstract class Car {
 	
 	
 	///les attributs des voitures
@@ -12,7 +13,7 @@ abstract class Car {
 	String type;
 	String carID;
 	int nbrSeat;
-	ArrayList<String> Conducteurs = new ArrayList<String>();
+	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	
 	
 	///le constructeur abstrait
@@ -26,8 +27,14 @@ abstract class Car {
 	
 
 ///les fonctions pour récuperer et modifier les attributs
-	public ArrayList<String> getDrivers (String str) {
+	public ArrayList<Driver> getDrivers () {
 		return Conducteurs;
+	}
+	public void addDriver (Driver driver) {
+		this.Conducteurs.add(driver);
+	}
+	public void removeDriver(Driver driver) {
+		this.Conducteurs.remove(driver);
 	}
 	public GPS getCarGPS() {
 		return carGPS;
