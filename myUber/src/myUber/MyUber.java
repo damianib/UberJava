@@ -38,6 +38,17 @@ public class MyUber {
 		
 	}
 	
+	///fonction pour commander un ride
+	public void commande(String rideType, GPS gps) {
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		Car car = trouverVoiture(rideType, gps, listOfCars);
+		
+			
+		}
+	}
+	
+	public Driver trouverConducteurs
+	
 	/// une fois le passager embarqué
 	public void faireUnRide(Ride ride, Car car, Driver driver) {
 		car.setCarStatus("non-available");
