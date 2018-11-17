@@ -11,7 +11,8 @@ public abstract class Ride {
 	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	protected GPS depart;
 	protected GPS arrivee;
-	protected double length = GPS.distance(depart, arrivee);
+	protected double length; 
+	//protected double lenght = 2.;
 	
 	
 	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
@@ -47,7 +48,7 @@ public abstract class Ride {
 		
 	}
 	
-	
+	///fonction qui renvoie le cout total du ride
 	public double rate(String traffic) {
 		
 		return this.basicRate()*this.length*this.trafficRate(traffic);
@@ -56,9 +57,11 @@ public abstract class Ride {
 
 	
 	/// Constructor
-	public Ride(String status) {
-		super();
+	public Ride(String status, GPS depart, GPS arrivee) {
 		this.status = status;
+		this.depart = depart;
+		this.arrivee = arrivee;
+		this.length = GPS.distance(depart, arrivee);
 	}
 
 	public String getStatus() {

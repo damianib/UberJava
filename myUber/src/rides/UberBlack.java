@@ -1,9 +1,11 @@
 package rides;
 
+import myUber.GPS;
+
 public class UberBlack extends Ride {
 
-	public UberBlack(String status) {
-		super(status);
+	public UberBlack(String status, GPS depart, GPS arrivee) {
+		super(status, depart, arrivee);
 		
 		this.basicRates.add(6.2);
 		this.basicRates.add(5.5);

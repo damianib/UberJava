@@ -3,18 +3,16 @@ package myUber;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.util.Iterator;
 
 import rides.Ride;
+import rides.RideFactory;
 
 
 public class MyUber {
 	
 	protected ArrayList bookOfRides = new ArrayList();
 	protected static int NombreDeClients = 0;
-	
-	
-	
 	
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
@@ -61,6 +59,28 @@ public class MyUber {
 		else {
 			return "high";
 		}
+		
+	}
+	
+	
+	public static void genPrice(GPS depart, GPS arrivee) {
+		
+		ArrayList<String> rideTypes = RideFactory.getRideTypes();
+		for (Iterator iterator = rideTypes.iterator(); iterator.hasNext();) {
+			String rideType = (String) iterator.next();
+			Ride currentRide = RideFactory.createRide(rideType, "-", depart, arrivee);
+			double currentPrice = currentRide.rate(getTraffic());
+			System.out.println("Type de ride : "+rideType);
+			System.out.println("Prix : "+currentPrice);
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		GPS depart = new GPS(0, 0);
+		GPS arrivee = new GPS(0, 2);
+		genPrice(depart, arrivee);
 		
 	}
 	
