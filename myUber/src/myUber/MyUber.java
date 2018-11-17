@@ -32,9 +32,9 @@ public class MyUber {
 		car.setCarStatus("non-available");
 		driver.setState("on-a-ride");
 		ride.setStatus("ongoing");
-		long time = ride.getDuration();
+		double time = ride.getDuration();
 		try {
-			Thread.sleep(time*1000);
+			Thread.sleep((long) (time*1000));
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
