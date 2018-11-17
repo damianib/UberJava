@@ -14,32 +14,35 @@ import car.CarFactory;
 public class MyUber {
 	
 	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
-	protected static int NombreDeClients = 0;
-	protected static ArrayList<Car> listOfCars = new ArrayList<Car>();
-	protected static ArrayList<Driver> listofDrivers = new ArrayList<Driver>();
+	protected static ArrayList<Customer> listOfClients = new ArrayList<Customer>();
+	protected static ArrayList<Driver> listOfDrivers = new ArrayList<Driver>();
 	
 	
 	
 	
 	
-	
+	///renvoie la voiture du type demandé disponible la plus proche
 	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
+		double distMin = 1000;
+		Car candidat = CarFactory.createCar(type);
 		for (Car car : listeVoitures) {
 			String typeVoiture = car.getType();
 			if (type == typeVoiture) {
 				double distance = GPS.distance(position, car.getCarGPS());
-				if (distance < 1000) {
+				if (distance < distMin) {
 					ArrayList<Driver> listeDriver = car.getDrivers();
 					for(Driver driv : listeDriver) {
 						if (driv.getState() == "on-duty") {
-							return car;
+							distMin = distance;
+							candidat = car;
 						}
 					}	
 				}
 			}
 		}
-		return null;
+		return candidat;
 	}
+	
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
 		
