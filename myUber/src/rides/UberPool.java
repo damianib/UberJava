@@ -15,6 +15,8 @@ public class UberPool extends Ride {
 		this.trafficRates.add(1.);
 		this.trafficRates.add(1.1);
 		this.trafficRates.add(1.2);
+		
+		this.carType = "Standard";
 	}
 	
 	

@@ -2,6 +2,8 @@ package rides;
 
 import java.util.ArrayList;
 
+import myUber.MyUber;
+
 import myUber.GPS;
 
 public abstract class Ride {
@@ -11,8 +13,10 @@ public abstract class Ride {
 	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	protected GPS depart;
 	protected GPS arrivee;
-	protected double length; 
-	//protected double lenght = 2.;
+	protected double length;
+	protected String traffic = MyUber.getTraffic();
+	protected double duration;
+	protected String carType;
 	
 	
 	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
@@ -44,6 +48,21 @@ public abstract class Ride {
 		}
 		else {
 			return this.trafficRates.get(2);
+		}
+		
+	}
+	
+	/// fonction qui renvoie la durée du trajet (en min)
+	public double duration(String traffic) {
+		
+		if (traffic == "low") {
+			return this.length/15.*60;
+		}
+		else if (traffic == "medium") {
+			return this.length/7.5*60;
+		}
+		else {
+			return this.length/3.*60;
 		}
 		
 	}

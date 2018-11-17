@@ -6,6 +6,9 @@ import myUber.GPS;
 
 public class RideFactory {
 	
+	protected ArrayList<Ride> poolRequests = new ArrayList<Ride>();
+	
+	//renvoie la liste de tous les types de ride dispo
 	public static ArrayList<String> getRideTypes(){
 		
 		ArrayList<String> rideTypes = new ArrayList<String>();
@@ -17,6 +20,7 @@ public class RideFactory {
 		
 	}
 	
+	//cree le ride voulu (design factory)
 	public static Ride createRide(String rideType, String status, GPS depart, GPS arrivee) {
 		
 		if (rideType == "UberBlack") {
