@@ -9,14 +9,37 @@ import rides.Ride;
 import rides.RideFactory;
 
 import car.Car;
+import car.CarFactory;
 
 public class MyUber {
 	
 	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
 	protected static int NombreDeClients = 0;
-	protected ArrayList<Car> listOfCars = new ArrayList<Car>();
-	protected ArrayList<Driver> listofDrivers = new ArrayList<Driver>();
+	protected static ArrayList<Car> listOfCars = new ArrayList<Car>();
+	protected static ArrayList<Driver> listofDrivers = new ArrayList<Driver>();
 	
+	
+	
+	
+	
+	
+	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
+		for (Car car : listeVoitures) {
+			String typeVoiture = car.getType();
+			if (type == typeVoiture) {
+				double distance = GPS.distance(position, car.getCarGPS());
+				if (distance < 1000) {
+					ArrayList<Driver> listeDriver = car.getDrivers();
+					for(Driver driv : listeDriver) {
+						if (driv.getState() == "on-duty") {
+							return car;
+						}
+					}	
+				}
+			}
+		}
+		return null;
+	}
 	///fonction renvoyant l'état du traffic
 	public static String getTraffic() {
 		
@@ -85,7 +108,8 @@ public class MyUber {
 		GPS depart = new GPS(0, 0);
 		GPS arrivee = new GPS(0, 2);
 		genPrice(depart, arrivee);
-		
+		Car car = CarFactory.createCar("Standard");
+		listOfCars.add(car);
 	}
 	
 	
