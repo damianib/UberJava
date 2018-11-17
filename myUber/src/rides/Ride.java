@@ -104,6 +104,7 @@ public abstract class Ride {
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.length = GPS.distance(depart, arrivee);
+		this.duration = duration(this.traffic);
 	}
 
 	public String getStatus() {

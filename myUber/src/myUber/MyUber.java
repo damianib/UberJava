@@ -32,6 +32,11 @@ public class MyUber {
 		stand.addDriver(listOfDrivers.get(1));
 		berl.addDriver(listOfDrivers.get(0));
 		van.addDriver(listOfDrivers.get(1));
+		Ride ride1 = RideFactory.createRide("UberX", new GPS(0. , 0.), new GPS(10.,10.));
+		Ride ride2 = RideFactory.createRide("UberBlack", new GPS(0. , 0.), new GPS(1.,1.));
+		faireUnRide(ride2, berl, listOfDrivers.get(0));
+		faireUnRide(ride1, stand, listOfDrivers.get(1));
+		
 		
 		}
 	
@@ -60,11 +65,13 @@ public class MyUber {
 		
 	
 	/// une fois le passager embarqué
-	public void faireUnRide(Ride ride, Car car, Driver driver) {
+	public static void faireUnRide(Ride ride, Car car, Driver driver) {
 		car.setCarStatus("non-available");
 		driver.setState("on-a-ride");
 		ride.setStatus("ongoing");
+		System.out.println(driver.getName() + " départ !");
 		double time = ride.getDuration();
+		System.out.println("la durée du voyage de " + driver.getName() + " est de " + time);
 		try {
 			Thread.sleep((long) (time*1000));
 		} catch (InterruptedException e1) {
@@ -74,6 +81,7 @@ public class MyUber {
 		ride.setStatus("completed");
 		driver.setState("on-duty");
 		car.setCarStatus("available");
+		System.out.println(driver.getName() + " arrivé !");
 		
 		
 		
@@ -159,7 +167,7 @@ public class MyUber {
 		ArrayList<String> rideTypes = RideFactory.getRideTypes();
 		for (Iterator iterator = rideTypes.iterator(); iterator.hasNext();) {
 			String rideType = (String) iterator.next();
-			Ride currentRide = RideFactory.createRide(rideType, "-", depart, arrivee);
+			Ride currentRide = RideFactory.createRide(rideType, depart, arrivee);
 			double currentPrice = currentRide.rate(getTraffic());
 			System.out.println("Type de ride : "+rideType);
 			System.out.println("Prix : "+currentPrice);
