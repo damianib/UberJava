@@ -19,7 +19,7 @@ public class MyUber {
 	
 	
 	
-	
+	public void faireUnRide(Ride ride)
 	
 	///renvoie la voiture du type demandé disponible la plus proche
 	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
