@@ -1,5 +1,10 @@
 package myUber;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class GPS {
 	
 	private double X;
@@ -28,6 +33,55 @@ public class GPS {
 		double dx = a.getX() - b.getX();
 		double dy = a.getY() - b.getY();
 		return (Math.sqrt(dx*dx + dy*dy));
+	}
+	
+	public static ArrayList<GPS> trajetPool(ArrayList<GPS> pickup, ArrayList<GPS> dropout, GPS position){
+		
+		ArrayList<GPS> trajet = new ArrayList<GPS>();
+		ArrayList<GPS> next = new ArrayList<GPS>();
+		ArrayList<Integer> etatClient = new ArrayList<Integer>();
+		for (int i = 0; i < pickup.size(); i++) {
+			etatClient.add(0);
+		}
+		
+		next.addAll(pickup);
+		double distanceMin = 100000000.;
+		int indexMin = 0;
+		GPS currentPos = position;
+		
+		while (!next.isEmpty()) {
+			
+			//Recherche de la distance minimale
+			for (int i = 0; i < next.size(); i++) {
+				double currentDistance = GPS.distance(currentPos, next.get(i));
+				if (currentDistance < distanceMin) {
+					distanceMin = currentDistance;
+					indexMin = i;
+				}
+			}
+			
+			trajet.add(next.get(indexMin));
+			currentPos = next.get(indexMin);
+			
+			if (etatClient.get(indexMin)==0) {
+				next.set(indexMin, dropout.get(indexMin));
+				etatClient.set(indexMin, 1);
+			}
+			else {
+				next.remove(indexMin);
+			}
+			
+			distanceMin = 100000000.;
+
+		}
+		
+		return trajet;
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + X + "," + Y + ")";
 	}
 
 }

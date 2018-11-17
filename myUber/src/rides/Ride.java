@@ -37,6 +37,30 @@ public abstract class Ride {
 		
 	}
 	
+	public String getTraffic() {
+		return traffic;
+	}
+
+	public void setTraffic(String traffic) {
+		this.traffic = traffic;
+	}
+
+	public double getDuration() {
+		return duration;
+	}
+
+	public void setDuration(double duration) {
+		this.duration = duration;
+	}
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
 	/// fonction qui renvoie le coefficient adapté au traffic présent
 	public double trafficRate(String traffic) {
 		
@@ -52,17 +76,17 @@ public abstract class Ride {
 		
 	}
 	
-	/// fonction qui renvoie la durée du trajet (en min)
+	/// fonction qui renvoie la durée du trajet (en s)
 	public double duration(String traffic) {
 		
 		if (traffic == "low") {
-			return this.length/15.*60;
+			return this.length/15.*60*60;
 		}
 		else if (traffic == "medium") {
-			return this.length/7.5*60;
+			return this.length/7.5*60*60;
 		}
 		else {
-			return this.length/3.*60;
+			return this.length/3.*60*60;
 		}
 		
 	}
