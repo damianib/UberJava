@@ -13,6 +13,7 @@ public class Berline extends Car {
 	static String type = "berline";
 	String carID;
 	static int nbrSeat = 4;
+	String carStatus = "available";
 	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	
 	

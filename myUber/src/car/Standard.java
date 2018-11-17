@@ -13,6 +13,7 @@ public class Standard extends Car {
 	static String type = "standard";
 	String carID;
 	static int nbrSeat = 4;
+	String carStatus = "available";
 	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	int nbrLibre = 4;
 	

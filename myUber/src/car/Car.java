@@ -13,6 +13,7 @@ public abstract class Car {
 	String type;
 	String carID;
 	int nbrSeat;
+	String carStatus;
 	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	
 	
@@ -27,6 +28,12 @@ public abstract class Car {
 	
 
 ///les fonctions pour récuperer et modifier les attributs
+	public String getCarStatus() {
+		return carStatus;
+	}
+	public void setCarStatus(String carStatus) {
+		this.carStatus = carStatus;
+	}
 	public ArrayList<Driver> getDrivers () {
 		return Conducteurs;
 	}

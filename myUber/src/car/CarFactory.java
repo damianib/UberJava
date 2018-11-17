@@ -9,7 +9,7 @@ public class CarFactory {
 	static int compteurBerline = 0;
 	static ArrayList<Car> listOfCars = new ArrayList<Car>();
 	
-	public static Car createCar(String CarType) {
+	public static void createCar(String CarType) {
 		
 		if (CarType == "Van") {
 			compteurVan ++;
@@ -32,10 +32,9 @@ public class CarFactory {
 			Berline berl = new Berline(ID);
 			listOfCars.add(berl);
 		}
-		return null;
 	}
 	
-	public ArrayList<Car> getListOfCars () {
+	public static ArrayList<Car> getListOfCars () {
 		return listOfCars;
 	}
 	public void supprimerCar (Car car) {

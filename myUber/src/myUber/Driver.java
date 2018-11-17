@@ -4,10 +4,10 @@ public class Driver {
 	
 	protected String name;
 	protected String surname;
-	protected int id;
-	protected String state;
-	protected double evaluation;
-	protected int nbEvaluations;
+	protected String id;
+	protected String state = "on-duty";
+	protected double evaluation = 0.;
+	protected int nbEvaluations = 0;
 	
 	
 	public int getNbEvaluations() {
@@ -38,10 +38,10 @@ public class Driver {
 		this.surname = surname;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -57,12 +57,11 @@ public class Driver {
 		this.nbEvaluations ++;
 	}
 	
-	public Driver(String name, String surname, int id, String state) {
+	public Driver(String name, String surname, String id) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.id = id;
-		this.state = state;
 	}
 	
 }

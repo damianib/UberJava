@@ -4,6 +4,7 @@ package myUber;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Timer;
 
 import rides.Ride;
 import rides.RideFactory;
@@ -14,22 +15,48 @@ import car.CarFactory;
 public class MyUber {
 	
 	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
-	protected static ArrayList<Customer> listOfClients = new ArrayList<Customer>();
-	protected static ArrayList<Driver> listOfDrivers = new ArrayList<Driver>();
 	
 	
+	public static void main(String[] args) {
+		CarFactory.createCar("Standard");
+		CarFactory.createCar("Standard");
+		CarFactory.createCar("Standard");
+		ArrayList<Car> test = CarFactory.getListOfCars();
+		System.out.println(test);
+		
+		
+	}
 	
-	public void faireUnRide(Ride ride) {
+	/// une fois le passager embarqué
+	public void faireUnRide(Ride ride, Car car, Driver driver) {
+		car.setCarStatus("non-available");
+		driver.setState("on-a-ride");
+		ride.setStatus("ongoing");
+		long time = ride.getDuration();
+		try {
+			Thread.sleep(time*1000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ride.setStatus("completed");
+		driver.setState("on-duty");
+		car.setCarStatus("available");
+		
+		
+		
+		
 		
 	}
 	
 	///renvoie la voiture du type demandé disponible la plus proche
 	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
 		double distMin = 1000;
-		Car candidat;
+		Car candidat = null;
 		for (Car car : listeVoitures) {
 			String typeVoiture = car.getType();
-			if (type == typeVoiture) {
+			String statusCar = car.getCarStatus();
+			if (type == typeVoiture && statusCar == "available") {
 				double distance = GPS.distance(position, car.getCarGPS());
 				if (distance < distMin) {
 					ArrayList<Driver> listeDriver = car.getDrivers();
@@ -83,7 +110,7 @@ public class MyUber {
 		
 	}
 	
-	
+	///nani the fuck
 	public static void bookingRide(Customer client, GPS destination, String rideType) {
 		
 		GPS depart = client.getGps();
@@ -93,7 +120,6 @@ public class MyUber {
 		
 		
 	}
-	
 	
 	//renvoie la liste des prix des rides en fonction du trajet
 	public static void genPrice(GPS depart, GPS arrivee) {
@@ -108,16 +134,6 @@ public class MyUber {
 		}
 		
 	}
-	
-	
-	public static void main(String[] args) {
-		
-		GPS depart = new GPS(0, 0);
-		GPS arrivee = new GPS(0, 2);
-		genPrice(depart, arrivee);
-		Car car = CarFactory.createCar("Standard");
-		listOfCars.add(car);
-	}
-	
+
 	
 }
