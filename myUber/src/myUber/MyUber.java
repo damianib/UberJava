@@ -33,21 +33,31 @@ public class MyUber {
 		berl.addDriver(listOfDrivers.get(0));
 		van.addDriver(listOfDrivers.get(1));
 		
-		
-		
-		
-	}
+		}
 	
 	///fonction pour commander un ride
-	public void commande(String rideType, GPS gps) {
+	public void commande(String rideType, GPS depart, GPS arrivee) {
 		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		Car car = trouverVoiture(rideType, gps, listOfCars);
+		Ride ride = RideFactory.createRide(rideType, depart, arrivee);
+		Car car = trouverVoiture(ride.getCarType(), depart, listOfCars);
+		Driver driver = trouverConducteur(car);
 		
+		faireUnRide(ride, car, driver);
 			
 		}
-	}
 	
-	public Driver trouverConducteurs
+	
+	public Driver trouverConducteur(Car car) {
+		car.setCarStatus("non-available");
+		ArrayList<Driver> listDriver = car.getDrivers();
+		for (Driver driver : listDriver) {
+			if (driver.getState() == "on-duty") {
+				return driver;
+			}
+			}
+		return null;
+		}
+		
 	
 	/// une fois le passager embarqué
 	public void faireUnRide(Ride ride, Car car, Driver driver) {
