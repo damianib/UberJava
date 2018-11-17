@@ -48,6 +48,11 @@ public class ZZZTest {
 			listOfCars.get(i).addDriver(listOfDrivers.get(i));
 		}
 		
+		//Creation Customer
+		for (int i = 0; i < nbCustomers; i++) {
+			CustomerFactory.createCustomer(""+i, ""+i, "421242124212");
+		}
+		
 	}
 
 }

@@ -8,7 +8,7 @@ import myUber.GPS;
 
 public abstract class Ride {
 	
-	protected String status;
+	protected String status = "unconfirmed";
 	protected ArrayList<Double> basicRates = new ArrayList<Double>();
 	protected ArrayList<Double> trafficRates = new ArrayList<Double>();
 	protected GPS depart;
@@ -100,8 +100,7 @@ public abstract class Ride {
 
 	
 	/// Constructor
-	public Ride(String status, GPS depart, GPS arrivee) {
-		this.status = status;
+	public Ride(GPS depart, GPS arrivee) {
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.length = GPS.distance(depart, arrivee);

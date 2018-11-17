@@ -4,8 +4,8 @@ import myUber.GPS;
 
 public class UberPool extends Ride {
 
-	public UberPool(String status, GPS depart, GPS arrivee) {
-		super(status, depart, arrivee);
+	public UberPool(GPS depart, GPS arrivee) {
+		super(depart, arrivee);
 		
 		this.basicRates.add(2.4);
 		this.basicRates.add(3.);

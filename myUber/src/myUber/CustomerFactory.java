@@ -7,7 +7,7 @@ public class CustomerFactory {
 	static int compteurCustomer = 0;
 	static ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
 	
-	public static void createDriver(String name, String surname, String creditCard) {
+	public static void createCustomer(String name, String surname, String creditCard) {
 		compteurCustomer ++;
 		String str = Integer.toString(compteurCustomer);
 		String ID = "Customer" + str;

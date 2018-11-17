@@ -21,19 +21,19 @@ public class RideFactory {
 	}
 	
 	//cree le ride voulu (design factory)
-	public static Ride createRide(String rideType, String status, GPS depart, GPS arrivee) {
+	public static Ride createRide(String rideType, GPS depart, GPS arrivee) {
 		
 		if (rideType == "UberBlack") {
-			return new UberBlack(status, depart, arrivee);
+			return new UberBlack(depart, arrivee);
 		}
 		else if (rideType == "UberPool") {
-			return new UberPool(status, depart, arrivee);
+			return new UberPool(depart, arrivee);
 		}
 		else if (rideType == "UberVan") {
-			return new UberVan(status, depart, arrivee);
+			return new UberVan(depart, arrivee);
 		}
 		else if (rideType == "UberX") {
-			return new UberX(status, depart, arrivee);
+			return new UberX(depart, arrivee);
 		}
 		else {
 			return null;

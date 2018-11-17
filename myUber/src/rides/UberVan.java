@@ -4,8 +4,8 @@ import myUber.GPS;
 
 public class UberVan extends Ride {
 
-	public UberVan(String status, GPS depart, GPS arrivee) {
-		super(status, depart, arrivee);
+	public UberVan(GPS depart, GPS arrivee) {
+		super(depart, arrivee);
 		
 		this.basicRates.add(6.2);
 		this.basicRates.add(7.7);
