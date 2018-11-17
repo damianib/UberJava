@@ -19,12 +19,14 @@ public class MyUber {
 	
 	
 	
-	public void faireUnRide(Ride ride)
+	public void faireUnRide(Ride ride) {
+		
+	}
 	
 	///renvoie la voiture du type demandé disponible la plus proche
 	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
 		double distMin = 1000;
-		Car candidat = CarFactory.createCar(type);
+		Car candidat;
 		for (Car car : listeVoitures) {
 			String typeVoiture = car.getType();
 			if (type == typeVoiture) {
@@ -49,31 +51,21 @@ public class MyUber {
 		///on récupère l'heure
 		Calendar cal = Calendar.getInstance();
         int heure = cal.get(Calendar.HOUR_OF_DAY);
-		
-		double plow;
-		double pmedium;
-		double phigh;
+        
+		double plow; double pmedium; double phigh;
 		
 		///en fonction de l'heure on attribut les coeff de proba
 		if (heure>22 || heure<7) {
-			plow = 0.95;
-			pmedium = 0.04;
-			phigh = 0.01;
+			plow = 0.95; pmedium = 0.04; phigh = 0.01;
 		}
 		else if (heure < 11) {
-			plow = 0.05;
-			pmedium = 0.2;
-			phigh = 0.75;
+			plow = 0.05; pmedium = 0.2; phigh = 0.75;
 		}
 		else if (heure < 17) {
-			plow = 0.15;
-			pmedium = 0.7;
-			phigh = 0.15;
+			plow = 0.15; pmedium = 0.7; phigh = 0.15;
 		}
 		else {
-			plow = 0.01;
-			pmedium = 0.04;
-			phigh = 0.95;
+			plow = 0.01; pmedium = 0.04; phigh = 0.95;
 		}
 		
 		/// on tire un nombre entre 0 et 1 et on annonce le résultat
@@ -92,6 +84,18 @@ public class MyUber {
 	}
 	
 	
+	public static void bookingRide(Customer client, GPS destination, String rideType) {
+		
+		GPS depart = client.getGps();
+		
+		genPrice(depart, destination);//liste des prix
+		
+		
+		
+	}
+	
+	
+	//renvoie la liste des prix des rides en fonction du trajet
 	public static void genPrice(GPS depart, GPS arrivee) {
 		
 		ArrayList<String> rideTypes = RideFactory.getRideTypes();
