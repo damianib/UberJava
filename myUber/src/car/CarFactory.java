@@ -17,21 +17,21 @@ public class CarFactory {
 			compteurVan ++;
 			String str = Integer.toString(compteurVan);
 			String ID = CarType + str;
-			Van van = new Van(ID);
+			Van van = new Van(ID, carGPS);
 			listOfCars.add(van);
 		}
 		else if (CarType == "Standard") {
 			compteurStandard ++;
 			String str = Integer.toString(compteurStandard);
 			String ID = CarType + str;
-			Standard stand = new Standard(ID);
+			Standard stand = new Standard(ID, carGPS);
 			listOfCars.add(stand);
 		}
 		else if (CarType == "Berline") {
 			compteurBerline ++;
 			String str = Integer.toString(compteurBerline);
 			String ID = CarType + str;
-			Berline berl = new Berline(ID);
+			Berline berl = new Berline(ID, carGPS);
 			listOfCars.add(berl);
 		}
 	}

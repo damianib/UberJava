@@ -9,7 +9,6 @@ public class Van extends Car {
 
 	
 	///les attributs
-	GPS carGPS = new GPS(0. ,0.);
 	static String type = "Van";
 	String carID;
 	static int nbrSeat = 6;
@@ -18,8 +17,8 @@ public class Van extends Car {
 	
 	
 	///le constucteur, via le super
-	public Van(String ID) {
-		super (type, ID, nbrSeat);
+	public Van(String ID, GPS carGPS) {
+		super (type, ID, nbrSeat, carGPS);
 	}
 	
 	

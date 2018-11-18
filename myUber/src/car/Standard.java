@@ -9,7 +9,6 @@ public class Standard extends Car {
 
 	
 	/// Attributs de la Standart
-	GPS carGPS = new GPS(0. ,0.);
 	static String type = "standard";
 	String carID;
 	static int nbrSeat = 4;
@@ -19,8 +18,8 @@ public class Standard extends Car {
 	
 	
 	/// Constucteur
-	public Standard(String ID) {
-		super (type, ID, nbrSeat);
+	public Standard(String ID, GPS carGPS) {
+		super (type, ID, nbrSeat, carGPS);
 	}
 
 	
