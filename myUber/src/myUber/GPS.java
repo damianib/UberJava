@@ -36,7 +36,14 @@ public class GPS {
 		return (Math.sqrt(dx*dx + dy*dy));
 	}
 	
-	//renvoie un GPS random
+	//renvoie un GPS random compris entre (0,0) et (10, 10)
+	public static GPS randGPS() {
+		double maxX = 10.;
+		double maxY = 10.;
+		return new GPS(Math.random()*maxX, Math.random()*maxY);
+	}
+	
+	//renvoie un GPS random avec X max et Y max précisés
 	public static GPS randGPS(double maxX, double maxY) {
 		return new GPS(Math.random()*maxX, Math.random()*maxY);
 	}
