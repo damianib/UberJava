@@ -14,11 +14,7 @@ import car.CarFactory;
 
 public class MyUber {
 	
-	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
-	
-	
-
-	
+	public static BookOfRides bookOfRides = new BookOfRides();
 	
 	public static void main(String[] args) {
 		
@@ -119,7 +115,8 @@ public class MyUber {
 		System.out.println("la durée du voyage de " + driver.getName() + " est de " + time);
 		
 		Timer timer = new Timer();
-		timer.schedule(new RideEnCours(ride, car, driver), (long) time);	
+		timer.schedule(new RideEnCours(ride, car, driver), (long) time);
+		bookOfRides.addEntry(car, driver, ride);
 	}
 	
 	///renvoie la voiture du type demandé disponible la plus proche
