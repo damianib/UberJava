@@ -56,22 +56,15 @@ public class MyUber {
 	
 	
 	public static void main(String[] args) {
-		DriverFactory.createDriver("pillot", "wolpertinger");
-		DriverFactory.createDriver("benoit", "rainbow");
+		
+		setup(1, 2, 3, 4);
+		
 		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
-		CarFactory.createCar("Standard", new GPS(0. , 0.));
-		CarFactory.createCar("Berline", new GPS(0. , 0.));
-		CarFactory.createCar("Van", new GPS(0. , 0.));
 		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		Car stand = listOfCars.get(0);
-		Car berl = listOfCars.get(1);
-		Car van = listOfCars.get(2);
-		stand.addDriver(listOfDrivers.get(0));
-		stand.addDriver(listOfDrivers.get(1));
-		berl.addDriver(listOfDrivers.get(0));
-		van.addDriver(listOfDrivers.get(1));
-		Ride ride1 = RideFactory.createRide("UberX", new GPS(0. , 0.), new GPS(1.,1.));
-		Ride ride2 = RideFactory.createRide("UberBlack", new GPS(0. , 0.), new GPS(10.,10.));
+		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
+		
+		while (! )
+		
 		faireUnRide(ride2, berl, listOfDrivers.get(0));
 		faireUnRide(ride1, stand, listOfDrivers.get(1));
 		
@@ -79,9 +72,9 @@ public class MyUber {
 		}
 	
 	///fonction pour commander un ride
-	public void commande(String rideType, GPS depart, GPS arrivee) {
+	public void commande(Customer customer, String rideType, GPS depart, GPS arrivee) {
 		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		Ride ride = RideFactory.createRide(rideType, depart, arrivee);
+		Ride ride = RideFactory.createRide(customer, rideType, depart, arrivee);
 		Car car = trouverVoiture(ride.getCarType(), depart, listOfCars);
 		Driver driver = trouverConducteur(car);
 		

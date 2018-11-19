@@ -15,7 +15,7 @@ public class CustomerFactory {
 		listOfCustomers.add(customer);
 	}	
 	
-	public ArrayList<Customer> getListOfCustomers() {
+	public static ArrayList<Customer> getListOfCustomers() {
 		return listOfCustomers;
 	}
 	public void supprimerCustomer (Customer customer) {
