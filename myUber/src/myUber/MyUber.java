@@ -59,9 +59,9 @@ public class MyUber {
 		DriverFactory.createDriver("pillot", "wolpertinger");
 		DriverFactory.createDriver("benoit", "rainbow");
 		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
-		CarFactory.createCar("Standard");
-		CarFactory.createCar("Berline");
-		CarFactory.createCar("Van");
+		CarFactory.createCar("Standard", new GPS(0. , 0.));
+		CarFactory.createCar("Berline", new GPS(0. , 0.));
+		CarFactory.createCar("Van", new GPS(0. , 0.));
 		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
 		Car stand = listOfCars.get(0);
 		Car berl = listOfCars.get(1);
@@ -70,8 +70,8 @@ public class MyUber {
 		stand.addDriver(listOfDrivers.get(1));
 		berl.addDriver(listOfDrivers.get(0));
 		van.addDriver(listOfDrivers.get(1));
-		Ride ride1 = RideFactory.createRide("UberX", new GPS(0. , 0.), new GPS(10.,10.));
-		Ride ride2 = RideFactory.createRide("UberBlack", new GPS(0. , 0.), new GPS(1.,1.));
+		Ride ride1 = RideFactory.createRide("UberX", new GPS(0. , 0.), new GPS(1.,1.));
+		Ride ride2 = RideFactory.createRide("UberBlack", new GPS(0. , 0.), new GPS(10.,10.));
 		faireUnRide(ride2, berl, listOfDrivers.get(0));
 		faireUnRide(ride1, stand, listOfDrivers.get(1));
 		
@@ -110,16 +110,13 @@ public class MyUber {
 		System.out.println(driver.getName() + " départ !");
 		double time = ride.getDuration();
 		System.out.println("la durée du voyage de " + driver.getName() + " est de " + time);
-		try {
-			Thread.sleep((long) (time*1000));
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ride.setStatus("completed");
-		driver.setState("on-duty");
-		car.setCarStatus("available");
-		System.out.println(driver.getName() + " arrivé !");
+		
+		Timer timer = new Timer();
+		timer.schedule(new RideEnCours(ride, car, driver), (long) time);
+		
+		
+		
+		
 		
 		
 		
