@@ -1,11 +1,12 @@
 package rides;
 
+import myUber.Customer;
 import myUber.GPS;
 
 public class UberVan extends Ride {
 
-	public UberVan(GPS depart, GPS arrivee) {
-		super(depart, arrivee);
+	public UberVan(Customer customer, GPS depart, GPS arrivee) {
+		super(customer, depart, arrivee);
 		
 		this.basicRates.add(6.2);
 		this.basicRates.add(7.7);

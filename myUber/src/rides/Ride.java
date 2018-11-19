@@ -3,7 +3,7 @@ package rides;
 import java.util.ArrayList;
 
 import myUber.MyUber;
-
+import myUber.Customer;
 import myUber.GPS;
 
 public abstract class Ride {
@@ -17,6 +17,7 @@ public abstract class Ride {
 	protected String traffic = MyUber.getTraffic();
 	protected double duration;
 	protected String carType;
+	protected Customer customer;
 	
 	
 	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
@@ -100,11 +101,12 @@ public abstract class Ride {
 
 	
 	/// Constructor
-	public Ride(GPS depart, GPS arrivee) {
+	public Ride(Customer customer, GPS depart, GPS arrivee) {
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.length = GPS.distance(depart, arrivee);
 		this.duration = duration(this.traffic);
+		this.customer = customer;
 	}
 
 	public String getStatus() {

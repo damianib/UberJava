@@ -1,11 +1,12 @@
 package rides;
 
+import myUber.Customer;
 import myUber.GPS;
 
 public class UberPool extends Ride {
 
-	public UberPool(GPS depart, GPS arrivee) {
-		super(depart, arrivee);
+	public UberPool(Customer customer, GPS depart, GPS arrivee) {
+		super(customer, depart, arrivee);
 		
 		this.basicRates.add(2.4);
 		this.basicRates.add(3.);

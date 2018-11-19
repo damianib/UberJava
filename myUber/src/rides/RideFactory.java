@@ -2,6 +2,7 @@ package rides;
 
 import java.util.ArrayList;
 
+import myUber.Customer;
 import myUber.GPS;
 
 public class RideFactory {
@@ -25,21 +26,21 @@ public class RideFactory {
 	}
 	
 	//cree le ride voulu (design factory)
-	public static Ride createRide(String rideType, GPS depart, GPS arrivee) {
+	public static Ride createRide(Customer customer, String rideType, GPS depart, GPS arrivee) {
 		
 		if (rideType == "UberBlack") {
-			return new UberBlack(depart, arrivee);
+			return new UberBlack(customer, depart, arrivee);
 		}
 		else if (rideType == "UberPool") {
-			Ride Pool = new UberPool(depart, arrivee);
+			Ride Pool = new UberPool(customer, depart, arrivee);
 			poolRequests.add(Pool);
 			return Pool;
 		}
 		else if (rideType == "UberVan") {
-			return new UberVan(depart, arrivee);
+			return new UberVan(customer, depart, arrivee);
 		}
 		else if (rideType == "UberX") {
-			return new UberX(depart, arrivee);
+			return new UberX(customer, depart, arrivee);
 		}
 		else {
 			return null;
