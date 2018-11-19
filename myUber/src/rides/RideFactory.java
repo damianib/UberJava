@@ -6,7 +6,11 @@ import myUber.GPS;
 
 public class RideFactory {
 	
-	protected ArrayList<Ride> poolRequests = new ArrayList<Ride>();
+	protected static ArrayList<Ride> poolRequests = new ArrayList<Ride>();
+	
+	public static ArrayList<Ride> getPoolRequests(){
+		return poolRequests;
+	}
 	
 	//renvoie la liste de tous les types de ride dispo
 	public static ArrayList<String> getRideTypes(){
@@ -27,7 +31,9 @@ public class RideFactory {
 			return new UberBlack(depart, arrivee);
 		}
 		else if (rideType == "UberPool") {
-			return new UberPool(depart, arrivee);
+			Ride Pool = new UberPool(depart, arrivee);
+			poolRequests.add(Pool);
+			return Pool;
 		}
 		else if (rideType == "UberVan") {
 			return new UberVan(depart, arrivee);
