@@ -101,9 +101,9 @@ public abstract class Ride {
 	}
 	
 	///fonction qui renvoie le cout total du ride
-	public double rate(String traffic) {
+	public double rate() {
 		
-		return this.basicRate()*this.length*this.trafficRate(traffic);
+		return this.basicRate()*this.length*this.trafficRate(this.traffic);
 		
 	}
 
