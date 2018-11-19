@@ -13,7 +13,7 @@ public abstract class Car {
 	String type;
 	String carID;
 	int nbrSeat;
-	String carStatus;
+	String carStatus = "available";
 	ArrayList<Driver> Conducteurs = new ArrayList<Driver>();
 	
 	

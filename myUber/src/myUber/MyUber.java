@@ -57,19 +57,43 @@ public class MyUber {
 	
 	public static void main(String[] args) {
 		
-		setup(1, 2, 3, 4);
+		setup(1, 1, 1, 5);
 		
 		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
 		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
 		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
 		
-		while (! )
+		ArrayList<Customer> listWait = new ArrayList<Customer>(listOfCustomers);
 		
-		faireUnRide(ride2, berl, listOfDrivers.get(0));
-		faireUnRide(ride1, stand, listOfDrivers.get(1));
-		
-		
+		while (!(listWait.size() == 0)) {
+			Customer customer = listWait.get(0);
+			listWait.remove(0);
+			String typeRide = RideAlea();
+			Ride ride = RideFactory.createRide(customer, typeRide, customer.getGps(), GPS.randGPS());
+			Car car = trouverVoiture(ride.getCarType(), customer.getGps(), listOfCars);
+			if (car == null) {
+				listWait.add(customer);
+			}
+			else {
+				System.out.println("ca part !");
+				Driver driver = trouverConducteur(car);
+				faireUnRide(ride, car, driver);
+			}	
+			
 		}
+	}
+	
+	///renvoie un type de ride aléatoire
+	public static String RideAlea () {
+		ArrayList<String> choix = new ArrayList<String>();
+		choix.add("UberVan");
+		choix.add("UberBlack");
+		choix.add("UberX");
+		///choix.add("UberPool");
+		int x =(int)(Math.random() * (2 + 1));
+		return choix.get(x);
+		
+	}
 	
 	///fonction pour commander un ride
 	public void commande(Customer customer, String rideType, GPS depart, GPS arrivee) {
@@ -83,7 +107,7 @@ public class MyUber {
 		}
 	
 	
-	public Driver trouverConducteur(Car car) {
+	public static Driver trouverConducteur(Car car) {
 		car.setCarStatus("non-available");
 		ArrayList<Driver> listDriver = car.getDrivers();
 		for (Driver driver : listDriver) {
@@ -105,31 +129,22 @@ public class MyUber {
 		System.out.println("la durée du voyage de " + driver.getName() + " est de " + time);
 		
 		Timer timer = new Timer();
-		timer.schedule(new RideEnCours(ride, car, driver), (long) time);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		timer.schedule(new RideEnCours(ride, car, driver), (long) time);	
 	}
 	
 	///renvoie la voiture du type demandé disponible la plus proche
-	public Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
-		double distMin = 1000;
+	public static Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
+		double distMin = 1000000000000000000000.;
 		Car candidat = null;
 		for (Car car : listeVoitures) {
 			String typeVoiture = car.getType();
 			String statusCar = car.getCarStatus();
-			if (type == typeVoiture && statusCar == "available") {
+			if (type.equals(typeVoiture) && statusCar.equals("available")) {
 				double distance = GPS.distance(position, car.getCarGPS());
 				if (distance < distMin) {
 					ArrayList<Driver> listeDriver = car.getDrivers();
 					for(Driver driv : listeDriver) {
-						if (driv.getState() == "on-duty") {
+						if (driv.getState().equals("on-duty")) {
 							distMin = distance;
 							candidat = car;
 						}

@@ -9,7 +9,7 @@ public class Berline extends Car {
 
 	
 	/// Attributs de la berline
-	static String type = "berline";
+	static String type = "Berline";
 	String carID;
 	static int nbrSeat = 4;
 	String carStatus = "available";

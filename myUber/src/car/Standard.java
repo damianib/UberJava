@@ -9,7 +9,7 @@ public class Standard extends Car {
 
 	
 	/// Attributs de la Standart
-	static String type = "standard";
+	static String type = "Standard";
 	String carID;
 	static int nbrSeat = 4;
 	String carStatus = "available";
