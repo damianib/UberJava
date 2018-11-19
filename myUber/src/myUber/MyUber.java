@@ -17,6 +17,37 @@ public class MyUber {
 	protected ArrayList<Ride> bookOfRides = new ArrayList<Ride>();
 	
 	
+
+	
+	
+	public static void main(String[] args) {
+		
+		setup(1, 1, 1, 5);
+		
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
+		
+		ArrayList<Customer> listWait = new ArrayList<Customer>(listOfCustomers);
+		
+		while (!(listWait.size() == 0)) {
+			Customer customer = listWait.get(0);
+			listWait.remove(0);
+			String typeRide = RideAlea();
+			Ride ride = RideFactory.createRide(customer, typeRide, customer.getGps(), GPS.randGPS());
+			Car car = trouverVoiture(ride.getCarType(), customer.getGps(), listOfCars);
+			if (car == null) {
+				listWait.add(customer);
+			}
+			else {
+				System.out.println("ca part !");
+				Driver driver = trouverConducteur(car);
+				faireUnRide(ride, car, driver);
+			}	
+			
+		}
+	}
+	
 	//cree et initie les voitures et clients, avec un conducteur par voiture
 	public static void setup(int nbStandard, int nbVan, int nbBerline, int nbCustomers) {
 			
@@ -54,35 +85,6 @@ public class MyUber {
 			
 		}
 	
-	
-	public static void main(String[] args) {
-		
-		setup(1, 1, 1, 5);
-		
-		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
-		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
-		
-		ArrayList<Customer> listWait = new ArrayList<Customer>(listOfCustomers);
-		
-		while (!(listWait.size() == 0)) {
-			Customer customer = listWait.get(0);
-			listWait.remove(0);
-			String typeRide = RideAlea();
-			Ride ride = RideFactory.createRide(customer, typeRide, customer.getGps(), GPS.randGPS());
-			Car car = trouverVoiture(ride.getCarType(), customer.getGps(), listOfCars);
-			if (car == null) {
-				listWait.add(customer);
-			}
-			else {
-				System.out.println("ca part !");
-				Driver driver = trouverConducteur(car);
-				faireUnRide(ride, car, driver);
-			}	
-			
-		}
-	}
-	
 	///renvoie un type de ride aléatoire
 	public static String RideAlea () {
 		ArrayList<String> choix = new ArrayList<String>();
@@ -106,7 +108,7 @@ public class MyUber {
 			
 		}
 	
-	
+	/// fonction pour recuperer un driver disponible pour cette voiture
 	public static Driver trouverConducteur(Car car) {
 		car.setCarStatus("non-available");
 		ArrayList<Driver> listDriver = car.getDrivers();
@@ -117,9 +119,8 @@ public class MyUber {
 			}
 		return null;
 		}
-		
-	
-	/// une fois le passager embarqué
+			
+	/// embarquement du passager
 	public static void faireUnRide(Ride ride, Car car, Driver driver) {
 		car.setCarStatus("non-available");
 		driver.setState("on-a-ride");
@@ -192,31 +193,5 @@ public class MyUber {
 		}
 		
 	}
-	
-	///nani the fuck
-	public static void bookingRide(Customer client, GPS destination, String rideType) {
-		
-		GPS depart = client.getGps();
-		
-		genPrice(depart, destination);//liste des prix
-		
-		
-		
-	}
-	
-	//renvoie la liste des prix des rides en fonction du trajet
-	public static void genPrice(GPS depart, GPS arrivee) {
-		
-		ArrayList<String> rideTypes = RideFactory.getRideTypes();
-		for (Iterator iterator = rideTypes.iterator(); iterator.hasNext();) {
-			String rideType = (String) iterator.next();
-			Ride currentRide = RideFactory.createRide(rideType, depart, arrivee);
-			double currentPrice = currentRide.rate(getTraffic());
-			System.out.println("Type de ride : "+rideType);
-			System.out.println("Prix : "+currentPrice);
-		}
-		
-	}
 
-	
 }

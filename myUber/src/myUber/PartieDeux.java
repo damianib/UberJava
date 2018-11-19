@@ -1,7 +1,11 @@
 package myUber;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+
+import rides.Ride;
+import rides.RideFactory;
 
 public class PartieDeux {
 	
@@ -115,5 +119,20 @@ public class PartieDeux {
 		}
 		return (nbr);
 	}
+	
+	
+	//renvoie la liste des prix des rides en fonction du trajet
+		public static void genPrice(GPS depart, GPS arrivee) {
+			
+			ArrayList<String> rideTypes = RideFactory.getRideTypes();
+			for (Iterator iterator = rideTypes.iterator(); iterator.hasNext();) {
+				String rideType = (String) iterator.next();
+				Ride currentRide = RideFactory.createRide(rideType, depart, arrivee);
+				double currentPrice = currentRide.rate(getTraffic());
+				System.out.println("Type de ride : "+rideType);
+				System.out.println("Prix : "+currentPrice);
+			}
+			
+		}
 
 }
