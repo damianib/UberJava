@@ -97,17 +97,6 @@ public class MyUber {
 		
 	}
 	
-	///fonction pour commander un ride
-	public void commande(Customer customer, String rideType, GPS depart, GPS arrivee) {
-		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		Ride ride = RideFactory.createRide(customer, rideType, depart, arrivee);
-		Car car = trouverVoiture(ride.getCarType(), depart, listOfCars);
-		Driver driver = trouverConducteur(car);
-		
-		faireUnRide(ride, car, driver);
-			
-		}
-	
 	/// fonction pour recuperer un driver disponible pour cette voiture
 	public static Driver trouverConducteur(Car car) {
 		car.setCarStatus("non-available");

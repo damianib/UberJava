@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import car.Car;
+import car.CarFactory;
 import rides.Ride;
 import rides.RideFactory;
 
@@ -119,6 +121,17 @@ public class PartieDeux {
 		}
 		return (nbr);
 	}
+	
+	///fonction pour commander un ride
+	public void commande(Customer customer, String rideType, GPS depart, GPS arrivee) {
+		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
+		Ride ride = RideFactory.createRide(customer, rideType, depart, arrivee);
+		Car car = trouverVoiture(ride.getCarType(), depart, listOfCars);
+		Driver driver = trouverConducteur(car);
+		
+		faireUnRide(ride, car, driver);
+			
+		}
 	
 	
 	//renvoie la liste des prix des rides en fonction du trajet
