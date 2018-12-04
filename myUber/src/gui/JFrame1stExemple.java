@@ -1,0 +1,63 @@
+package gui;
+
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+
+import myUber.Customer;
+import myUber.CustomerFactory;
+import myUber.MyUber;
+
+public class JFrame1stExemple {
+	public static void main(String[] args) {
+		
+		MyUber.setup(1, 2, 3, 4);
+		
+		JFrame myFrame =new JFrame("myUber controler");
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// creer les menus déroulant
+		JMenuBar menuBar = new JMenuBar();
+		JMenu menuControl = new JMenu("Control");
+		JMenu menuCustomer = new JMenu("Customer");
+		JMenu menuDriver = new JMenu("Driver");
+		
+		// implementer le menu client
+		for (Customer customer : CustomerFactory.getListOfCustomers()) {
+			createPageCustomer(menuCustomer, customer, myFrame);
+			
+			
+			
+		}
+		
+		menuBar.add(menuControl);
+		menuBar.add(menuCustomer);
+		menuBar.add(menuDriver);
+		myFrame.setJMenuBar(menuBar);
+		
+		
+		myFrame.pack();
+		
+		myFrame.setVisible(true);
+		
+	}
+	
+	
+	
+	public static void createPageCustomer (JMenu menu, Customer customer, JFrame myFrame) {
+		JMenuItem page = new JMenuItem(customer.getId());
+		
+		page.addActionListener(new CustomerListener(customer, myFrame));
+		
+		menu.add(page);
+	}
+	
+}
