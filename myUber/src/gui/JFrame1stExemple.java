@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -21,7 +24,7 @@ import myUber.MyUber;
 public class JFrame1stExemple {
 	public static void main(String[] args) {
 		
-		MyUber.setup(1, 2, 3, 4);
+		MyUber.setup(0, 2, 3, 4);
 		
 		JFrame myFrame =new JFrame("myUber controler");
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,6 +67,19 @@ public class JFrame1stExemple {
 		JMenuItem page = new JMenuItem(driver.getId());
 		page.addActionListener(new DriverListener(driver, myFrame));
 		menu.add(page);
+	}
+	public static JPanel getCustomerDescription (Customer customer) {
+		JPanel description = new JPanel();
+		description.setBackground(Color.white);
+	    description.setPreferredSize(new Dimension(500, 120));
+	    description.setBorder(BorderFactory.createTitledBorder("Fiche client"));
+	    JLabel nomLabel = new JLabel("Nom : " + customer.getName());
+	    JLabel prenomLabel = new JLabel("Prenom : " + customer.getSurname());
+	    JLabel gpsLabel = new JLabel("Votre position : " + customer.getGps());
+	    description.add(nomLabel);
+	    description.add(prenomLabel);
+	    description.add(gpsLabel);
+	    return description;
 	}
 	
 }

@@ -30,16 +30,7 @@ public class CustomerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		JPanel description = new JPanel();
-		description.setBackground(Color.white);
-	    description.setPreferredSize(new Dimension(500, 120));
-	    description.setBorder(BorderFactory.createTitledBorder("Fiche client"));
-	    JLabel nomLabel = new JLabel("Nom : " + this.customer.getName());
-	    JLabel prenomLabel = new JLabel("Prenom : " + this.customer.getSurname());
-	    JLabel gpsLabel = new JLabel("Votre position : " + this.customer.getGps());
-	    description.add(nomLabel);
-	    description.add(prenomLabel);
-	    description.add(gpsLabel);
+		JPanel description = JFrame1stExemple.getCustomerDescription(this.customer);
 	    
 	    JPanel action = createCustomerActionPanel();
 	    
@@ -58,10 +49,11 @@ public class CustomerListener implements ActionListener {
 	    action.setPreferredSize(new Dimension(500, 120));
 	    action.setBorder(BorderFactory.createTitledBorder("Votre situation"));
 	    if (this.customer.getStatus().equals("free")) {
-	    	JLabel prop = new JLabel("Pour commander un trajet, cliquez sur le bouton ci dessous");
-	    	JButton demarer = new JButton();
+	    	JLabel prop = new JLabel("Pour commander un trajet, cliquez sur le bouton ");
+	    	JButton demarrer = new JButton("rechercher un ride");
+	    	demarrer.addActionListener(new RechercherRide(this.customer, this.frame));
 	    	action.add(prop, BorderLayout.NORTH);
-	    	action.add(demarer, BorderLayout.SOUTH);
+	    	action.add(demarrer, BorderLayout.SOUTH);
 	    	
 	    }
 	    else if (this.customer.getStatus().equals("waiting")) {
