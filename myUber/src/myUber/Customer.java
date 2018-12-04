@@ -10,7 +10,14 @@ public class Customer {
 	protected GPS gps;
 	protected String creditCard;
 	ArrayList<String> MailBox = new ArrayList<String>();
+	String status = "free";
 	
+	public String getStatus() {
+		return this.status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getName() {
 		return name;
 	}

@@ -14,6 +14,8 @@ import javax.swing.JTabbedPane;
 
 import myUber.Customer;
 import myUber.CustomerFactory;
+import myUber.Driver;
+import myUber.DriverFactory;
 import myUber.MyUber;
 
 public class JFrame1stExemple {
@@ -33,9 +35,10 @@ public class JFrame1stExemple {
 		// implementer le menu client
 		for (Customer customer : CustomerFactory.getListOfCustomers()) {
 			createPageCustomer(menuCustomer, customer, myFrame);
-			
-			
-			
+		}
+		
+		for (Driver driver : DriverFactory.getListOfDrivers()) {
+			createPageDriver(menuDriver, driver, myFrame);
 		}
 		
 		menuBar.add(menuControl);
@@ -54,9 +57,12 @@ public class JFrame1stExemple {
 	
 	public static void createPageCustomer (JMenu menu, Customer customer, JFrame myFrame) {
 		JMenuItem page = new JMenuItem(customer.getId());
-		
 		page.addActionListener(new CustomerListener(customer, myFrame));
-		
+		menu.add(page);
+	}
+	public static void createPageDriver (JMenu menu, Driver driver, JFrame myFrame) {
+		JMenuItem page = new JMenuItem(driver.getId());
+		page.addActionListener(new DriverListener(driver, myFrame));
 		menu.add(page);
 	}
 	
