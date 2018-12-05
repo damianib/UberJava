@@ -67,8 +67,31 @@ public class DriverListener implements ActionListener {
 	    	action.add(etat);
 	    	action.add(agree);
 	    }
-	    
-	    
+	    else if (this.driver.getState().equals("drivingToC")) {
+	    	JLabel etat = new JLabel("Vous conduisez vers le client, soyez attentif au traffic !");
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	action.setBackground(Color.orange);
+	    	action.add(etat);
+	    }
+	    else if (this.driver.getState().equals("cancelled")) {
+	    	JLabel etat = new JLabel("Attention, le client a annulé le trajet !");
+	    	etat.setPreferredSize(new Dimension(400,40));
+	    	JButton ok = new JButton("ok");
+	    	ok.addActionListener(new AnnulationConfirmee (driver, frame));
+	    	action.add(etat);
+	    	action.add(ok);
+	    	action.setBackground(Color.red);
+	    }
+	    else if (this.driver.getState().equals("waiting")) {
+	    	action.add(new JLabel("Le client devrait vous rejoindre"));
+	    	
+	    }
+	    else if (this.driver.getState().equals("on-a-ride")) {
+	    	JLabel etat = new JLabel("Vous conduisez le client vers sa destination, soyez attentif au traffic !");
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	action.setBackground(Color.orange);
+	    	action.add(etat);
+	    }
 	    
 	    //fin
 	    JPanel panel = new JPanel ();

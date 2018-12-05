@@ -16,6 +16,7 @@ public class MyUber {
 	
 	public static BookOfRides bookOfRides = new BookOfRides();
 	
+	
 	public static void main(String[] args) {
 		
 		setup(1, 1, 1, 5);
@@ -82,16 +83,14 @@ public class MyUber {
 			
 		}
 	
-	///renvoie un type de ride aléatoire
-	public static String RideAlea () {
-		ArrayList<String> choix = new ArrayList<String>();
-		choix.add("UberVan");
-		choix.add("UberBlack");
-		choix.add("UberX");
-		///choix.add("UberPool");
-		int x =(int)(Math.random() * (2 + 1));
-		return choix.get(x);
-		
+	
+	
+	///fonction qui renvoie le type de ride, pour un type de voiture (hors UberPool)
+	public static String correspondanceCarToRide(String carType) {
+		if (carType.equals("Standard")) {return "UberX";}
+		else if (carType.equals("Van")) {return "UberVan";}
+		else if (carType.equals("Berline")) {return "UberBlack";}
+		return null;
 	}
 	
 	/// fonction pour recuperer un driver disponible pour cette voiture
@@ -120,17 +119,15 @@ public class MyUber {
 
 	
 	/// embarquement du passager
-	public static void faireUnRide(Ride ride, Car car, Driver driver) {
-		car.setCarStatus("non-available");
-		driver.setState("on-a-ride");
+	public static void faireUnRide(Customer customer) {
+		Ride ride = RideFactory.customerToRide(customer);
+		ride.getDriver().setState("on-a-ride");
+		customer.setStatus("on-a-ride");
 		ride.setStatus("ongoing");
-		System.out.println(driver.getName() + " départ !");
 		double time = ride.getDuration();
-		System.out.println("la durée du voyage de " + driver.getName() + " est de " + time);
-		
 		Timer timer = new Timer();
-		timer.schedule(new RideEnCours(ride, car, driver), (long) time);
-		bookOfRides.addEntry(car, driver, ride);
+		timer.schedule(new RideEnCours(ride, ride.getCar(), ride.getDriver()), (long) time);
+		bookOfRides.addEntry(ride.getCar(), ride.getDriver(), ride);
 	}
 	
 	///renvoie la voiture du type demandé disponible la plus proche

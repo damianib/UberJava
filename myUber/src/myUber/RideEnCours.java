@@ -4,6 +4,7 @@ import java.util.TimerTask;
 
 import car.Car;
 import rides.Ride;
+import rides.RideFactory;
 
 public class RideEnCours extends TimerTask {
 	
@@ -26,9 +27,11 @@ public class RideEnCours extends TimerTask {
 	@Override
 	public void run() {
 		ride.setStatus("completed");
+		RideFactory.getRideEnCours().remove(ride);
+		RideFactory.getRideFinies().add(ride);
 		driver.setState("on-duty");
 		car.setCarStatus("available");
-		System.out.println(driver.getName() + " arrivé !");
+		ride.getCustomer().setStatus("free");
 		
 	}
 

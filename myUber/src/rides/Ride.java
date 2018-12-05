@@ -43,38 +43,6 @@ public abstract class Ride {
 		
 	}
 	
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public String getTraffic() {
-		return traffic;
-	}
-
-	public void setTraffic(String traffic) {
-		this.traffic = traffic;
-	}
-
-	public double getDuration() {
-		return duration;
-	}
-
-	public void setDuration(double duration) {
-		this.duration = duration;
-	}
-
-	public String getCarType() {
-		return carType;
-	}
-
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
-
 	/// fonction qui renvoie le coefficient adapté au traffic présent
 	public double trafficRate(String traffic) {
 		
@@ -121,79 +89,86 @@ public abstract class Ride {
 		this.duration = duration(this.traffic);
 		this.customer = customer;
 	}
-
+	//getters and setters
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public String getTraffic() {
+		return traffic;
+	}
+	public void setTraffic(String traffic) {
+		this.traffic = traffic;
+	}
+	public double getDuration() {
+		return duration;
+	}
+	public void setDuration(double duration) {
+		this.duration = duration;
+	}
+	public String getCarType() {
+		return carType;
+	}
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	public ArrayList<Double> getBasicRates() {
 		return basicRates;
 	}
-
 	public void setBasicRates(ArrayList<Double> basicRates) {
 		this.basicRates = basicRates;
 	}
-
 	public ArrayList<Double> getTrafficRates() {
 		return trafficRates;
 	}
-
 	public void setTrafficRates(ArrayList<Double> trafficRates) {
 		this.trafficRates = trafficRates;
 	}
-
 	public GPS getDepart() {
 		return depart;
 	}
-
 	public void setDepart(GPS depart) {
 		this.depart = depart;
 	}
-
 	public GPS getArrivee() {
 		return arrivee;
 	}
-
 	public void setArrivee(GPS arrivee) {
 		this.arrivee = arrivee;
 	}
-
 	public double getLength() {
 		return length;
 	}
-
 	public void setLength(double length) {
 		this.length = length;
 	}
-
 	public Driver getDriver() {
 		return driver;
 	}
-
 	public void setDriver(Driver driver) {
 		this.driver = driver;
 	}
-
 	public Car getCar() {
 		return car;
 	}
-
 	public void setCar(Car car) {
 		this.car = car;
 	}
-
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	
 	
 }

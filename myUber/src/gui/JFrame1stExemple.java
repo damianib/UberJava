@@ -81,21 +81,17 @@ public class JFrame1stExemple {
 		page.addActionListener(new AjoutListener(myFrame, menuCustomer, menuDriver, menuCar));
 		menuControl.add(page);
 	}
-	
 	public static void createPageDeplacement(JMenu menu, JFrame myFrame) {
 		 JMenuItem page = new JMenuItem("Deplacement");
 		 page.addActionListener(new DeplacementListener(myFrame));
 		 menu.add(page);
 		 
 	}
-	
 	public static void createPageCar(JMenu menu, Car car, JFrame myFrame) {
 		JMenuItem page = new JMenuItem(car.getCarID());
 		page.addActionListener(new CarListener(car, myFrame));
 		menu.add(page);
 	}
-	
-	
 	public static void createPageCustomer (JMenu menu, Customer customer, JFrame myFrame) {
 		JMenuItem page = new JMenuItem(customer.getId());
 		page.addActionListener(new CustomerListener(customer, myFrame));
@@ -106,6 +102,7 @@ public class JFrame1stExemple {
 		page.addActionListener(new DriverListener(driver, myFrame));
 		menu.add(page);
 	}
+	
 	public static JPanel getCustomerDescription (Customer customer) {
 		JPanel description = new JPanel();
 		description.setBackground(Color.white);

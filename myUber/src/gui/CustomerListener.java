@@ -59,7 +59,7 @@ public class CustomerListener implements ActionListener {
 	    	
 	    }
 	    else if (this.customer.getStatus().equals("waiting_confirmation")) {
-	    	Ride ride = RideFactory.recupererRide(this.customer);
+	    	Ride ride = RideFactory.customerToRide(this.customer);
 	    	JPanel recap = new JPanel();
 	    	recap.setBackground(Color.white);
 	    	recap.add(new JLabel("Vous avez commander un " + ride.getType()));
@@ -73,12 +73,37 @@ public class CustomerListener implements ActionListener {
 	    	action.add(cancel);
 	    	
 	    }
-	    else if (this.customer.getStatus().equals("embarquement")) {
+	    else if (this.customer.getStatus().equals("waiting_driver")) {
+	    	JLabel info = new JLabel("Votre demande a été accepté, un driver arrive");
+	    	JButton cancel = new JButton("annuler le trajet");
+	    	cancel.addActionListener(new AnnulationDriverToCustomer(customer, frame));
+	    	action.add(info);
+	    	action.add(cancel);
 	    	
 	    }
-	    else if (this.customer.getStatus().contentEquals("en_route")) {
-	    	
+	    else if (this.customer.getStatus().contentEquals("driver_arrived")) {
+	    	JLabel etat = new JLabel("Le driver est arrivé, veuillez embarquer !");
+	    	etat.setPreferredSize(new Dimension(400,40));
+	    	JButton annulez = new JButton("annulez le trajet");
+	    	annulez.addActionListener(new AnnulationDriverArrived(frame, customer));
+	    	JButton embarq = new JButton("J'ai embarqué !");
+	    	embarq.addActionListener(new LeRideEstLance(frame, customer));
+	    	action.add(etat);
+	    	action.add(annulez);
+	    	action.add(embarq);
 	    }
+	    else if (this.customer.getStatus().contentEquals("on-a-ride")) {
+	    	JLabel etat = new JLabel("Nous esperons que vous profitez de votre voyage :)");
+	    	etat.setPreferredSize(new Dimension(400,40));
+	    	etat.setBackground(Color.blue);
+	    	action.add(etat);
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
 	    return action;
 	}
 
