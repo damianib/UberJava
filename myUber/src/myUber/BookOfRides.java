@@ -34,6 +34,7 @@ public class BookOfRides {
 		this.rides = rides;
 	}
 	
+	/** Permet d'ajouter une entree au bookOfRides */
 	public void addEntry(Car car, Driver driver, Ride ride) {
 		this.cars.add(car);
 		this.drivers.add(driver);

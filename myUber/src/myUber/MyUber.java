@@ -45,7 +45,9 @@ public class MyUber {
 		}
 	}
 	
-	//cree et initie les voitures et clients, avec un conducteur par voiture
+	/**cree et initie les voitures et clients, avec un conducteur par voiture
+	 * 
+	 */
 	public static void setup(int nbStandard, int nbVan, int nbBerline, int nbCustomers) {
 			
 			double maxX = 10.;
@@ -85,7 +87,9 @@ public class MyUber {
 	
 	
 	
-	///fonction qui renvoie le type de ride, pour un type de voiture (hors UberPool)
+	/**fonction qui renvoie le type de ride, pour un type de voiture (hors UberPool)
+	 * 
+	 */
 	public static String correspondanceCarToRide(String carType) {
 		if (carType.equals("Standard")) {return "UberX";}
 		else if (carType.equals("Van")) {return "UberVan";}
@@ -93,7 +97,9 @@ public class MyUber {
 		return null;
 	}
 	
-	/// fonction pour recuperer un driver disponible pour cette voiture
+	/** fonction pour recuperer un driver disponible pour cette voiture7
+	 * 
+	 */
 	public static Driver trouverConducteur(Car car) {
 		car.setCarStatus("non-available");
 		ArrayList<Driver> listDriver = car.getDrivers();
@@ -118,7 +124,9 @@ public class MyUber {
 	}
 
 	
-	/// embarquement du passager
+	/** embarquement du passager
+	 * 
+	 */
 	public static void faireUnRide(Customer customer) {
 		Ride ride = RideFactory.customerToRide(customer);
 		ride.getDriver().setState("on-a-ride");
@@ -130,7 +138,9 @@ public class MyUber {
 		bookOfRides.addEntry(ride.getCar(), ride.getDriver(), ride);
 	}
 	
-	///renvoie la voiture du type demandé disponible la plus proche
+	/**renvoie la voiture du type demandé disponible la plus proche
+	 * 
+	 */
 	public static Car trouverVoiture (String type, GPS position, ArrayList<Car> listeVoitures) {
 		double distMin = 1000000000000000000000.;
 		Car candidat = null;
@@ -153,7 +163,9 @@ public class MyUber {
 		return candidat;
 	}
 	
-	///fonction renvoyant l'état du traffic
+	/**fonction renvoyant l'état du traffic
+	 * 
+	 */
 	public static String getTraffic() {
 		
 		///on récupère l'heure

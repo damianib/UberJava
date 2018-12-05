@@ -25,7 +25,7 @@ public abstract class Ride {
 	Car car;
 	
 	
-	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
+	/** fonction qui renvoie le coefficient adapté à la longueur du trajet */
 	public double basicRate() {
 		
 		if (length < 5) {
@@ -43,7 +43,7 @@ public abstract class Ride {
 		
 	}
 	
-	/// fonction qui renvoie le coefficient adapté au traffic présent
+	/** fonction qui renvoie le coefficient adapté au traffic present*/
 	public double trafficRate(String traffic) {
 		
 		if (traffic == "low") {
@@ -58,7 +58,7 @@ public abstract class Ride {
 		
 	}
 	
-	/// fonction qui renvoie la durée du trajet (en s)
+	/** fonction qui renvoie la durée du trajet (en s)*/
 	public double duration(String traffic) {
 		
 		if (traffic == "low") {
@@ -73,7 +73,7 @@ public abstract class Ride {
 		
 	}
 	
-	///fonction qui renvoie le cout total du ride
+	/**fonction qui renvoie le cout total du ride*/
 	public double rate() {
 		
 		return this.basicRate()*this.length*this.trafficRate(this.traffic);
@@ -81,7 +81,7 @@ public abstract class Ride {
 	}
 
 	
-	/// Constructor
+	/** Constructor*/
 	public Ride(Customer customer, GPS depart, GPS arrivee) {
 		this.depart = depart;
 		this.arrivee = arrivee;
@@ -89,6 +89,7 @@ public abstract class Ride {
 		this.duration = duration(this.traffic);
 		this.customer = customer;
 	}
+	
 	//getters and setters
 	public Customer getCustomer() {
 		return customer;

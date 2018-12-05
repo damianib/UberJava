@@ -19,7 +19,7 @@ public class RideFactory {
 		return poolRequests;
 	}
 	
-	//renvoie la liste de tous les types de ride dispo
+	/**renvoie la liste de tous les types de ride dispo*/
 	public static ArrayList<String> getRideTypes(){
 		
 		ArrayList<String> rideTypes = new ArrayList<String>();
@@ -31,7 +31,7 @@ public class RideFactory {
 		
 	}
 	
-	//cree le ride voulu (design factory)
+	/**cree le ride voulu (design factory)*/
 	public static Ride createRide(Customer customer, String rideType, GPS depart, GPS arrivee) {
 		if (rideType == "UberBlack") {
 			return new UberBlack(customer, depart, arrivee);
@@ -53,7 +53,7 @@ public class RideFactory {
 		
 	}
 
-	// à partir d'un client retrouver le ride en cours
+	/** à partir d'un client retrouver le ride en cours*/
 	public static Ride customerToRide(Customer customer) {
 		for (Ride ride : rideEnCours) {
 			if (ride.getCustomer()== customer) {
@@ -63,7 +63,7 @@ public class RideFactory {
 		return null;
 	}
 	
-	// à partir d'un driver retrouver le ride en cours
+	/** à partir d'un driver retrouver le ride en cours*/
 	public static Ride driverToRide(Driver driver) {
 		for (Ride ride : rideEnCours) {
 			if (ride.getDriver()== driver) {
@@ -73,7 +73,7 @@ public class RideFactory {
 		return null;
 	}
 	
-	// à partir d'un driver retourver le DriverToCustomer
+	/** à partir d'un driver retourver le DriverToCustomer*/
 	public static DriverToCustomer2 driverToDriverToCustomer(Driver driver) {
 		for (DriverToCustomer2 ride : listOfDriverToCustomer) {
 			if (ride.getDriver()== driver) {
@@ -83,7 +83,7 @@ public class RideFactory {
 		return null;
 	}
 	
-	// à partir d'un customer retourver le DriverToCustomer
+	/** à partir d'un customer retourver le DriverToCustomer*/
 		public static DriverToCustomer2 customerToDriverToCustomer(Customer customer) {
 			for (DriverToCustomer2 ride : listOfDriverToCustomer) {
 				if (ride.getCustomer()== customer) {
@@ -93,7 +93,7 @@ public class RideFactory {
 			return null;
 		}
 	
-	// getters and setters
+	/** getters and setters*/
  	public static ArrayList<Ride> getRideEnCours() {
 		return rideEnCours;
 	}

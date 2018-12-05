@@ -23,7 +23,7 @@ public class Standard extends Car {
 	}
 
 	
-	/// fonctions concernant les sièges libres, pour UberPool
+	/** fonctions concernant les sièges libres, pour UberPool*/
 	public int getNbrLibre() {
 		return nbrLibre;
 	}

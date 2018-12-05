@@ -11,6 +11,7 @@ public class CarFactory {
 	static int compteurBerline = 0;
 	static ArrayList<Car> listOfCars = new ArrayList<Car>();
 	
+	/** Cree un car ajoute directement dans listOfCars selon le type demande*/
 	public static void createCar(String CarType, GPS carGPS) {
 		
 		if (CarType == "Van") {

@@ -7,6 +7,7 @@ public class CustomerFactory {
 	static int compteurCustomer = 0;
 	static ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
 	
+	/** Permet de creer un nouveau customer ajoute directement a listOfCustomers*/
 	public static void createCustomer(String name, String surname, String creditCard, GPS gps) {
 		compteurCustomer ++;
 		String str = Integer.toString(compteurCustomer);

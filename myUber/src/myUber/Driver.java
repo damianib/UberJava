@@ -66,6 +66,7 @@ public class Driver {
 		this.state = state;
 	}
 	
+	/** Ajoute une evaluation au driver en prenant en compte les precedentes */
 	public void ajouterEval(int stars) {
 		this.evaluation = (this.nbEvaluations*this.evaluation+stars)/(this.nbEvaluations+1);
 		this.nbEvaluations ++;
