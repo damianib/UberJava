@@ -17,6 +17,7 @@ import car.CarFactory;
 import myUber.Driver;
 import myUber.MyUber;
 import rides.Ride;
+import rides.RideFactory;
 
 public class LancerCourse implements ActionListener {
 	
@@ -33,6 +34,14 @@ public class LancerCourse implements ActionListener {
 		Car car = MyUber.trouverVoiture(this.ride.getCarType(), this.ride.getDepart(), CarFactory.getListOfCars());
 		if (!(car == null)) {
 			Driver driver = MyUber.trouverConducteur(car);
+			this.ride.setCar(car);
+			this.ride.setDriver(driver);
+			this.ride.setStatus("confirmed");
+			car.setCarStatus("unavailable");
+			driver.setState("asked");
+			this.ride.getCustomer().setStatus("waiting_confirmation");
+			RideFactory.getRideEnCours().add(this.ride);
+			new CustomerListener(this.ride.getCustomer(), this.frame).actionPerformed(e);
 			
 		}
 		else {

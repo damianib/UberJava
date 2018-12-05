@@ -1,15 +1,29 @@
 package myUber;
 
+import java.util.ArrayList;
+
+import car.Car;
+
 public class Driver {
 	
 	protected String name;
 	protected String surname;
 	protected String id;
-	protected String state = "on-duty";
+	protected String state = "off-duty";
 	protected double evaluation = 0.;
 	protected int nbEvaluations = 0;
+	protected ArrayList<Car> cars = new ArrayList<Car>();
 	
 	
+	public ArrayList<Car> getCars() {
+		return cars;
+	}
+	public void setCars(ArrayList<Car> cars) {
+		this.cars = cars;
+	}
+	public void addCar(Car car) {
+		this.cars.add(car);
+	}
 	public int getNbEvaluations() {
 		return nbEvaluations;
 	}

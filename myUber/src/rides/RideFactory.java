@@ -7,6 +7,8 @@ import myUber.GPS;
 
 public class RideFactory {
 	
+	static ArrayList<Ride> rideEnCours = new ArrayList<Ride>();
+	static ArrayList<Ride> rideFinies = new ArrayList<Ride>();
 	protected static ArrayList<Ride> poolRequests = new ArrayList<Ride>();
 	
 	public static ArrayList<Ride> getPoolRequests(){
@@ -27,7 +29,6 @@ public class RideFactory {
 	
 	//cree le ride voulu (design factory)
 	public static Ride createRide(Customer customer, String rideType, GPS depart, GPS arrivee) {
-		
 		if (rideType == "UberBlack") {
 			return new UberBlack(customer, depart, arrivee);
 		}
@@ -48,4 +49,32 @@ public class RideFactory {
 		
 	}
 
+	public static Ride recupererRide(Customer customer) {
+		for (Ride ride : rideEnCours) {
+			if (ride.getCustomer()== customer) {
+				return ride;
+			}
+		}
+		return null;
+	}
+	
+	public static ArrayList<Ride> getRideEnCours() {
+		return rideEnCours;
+	}
+
+	public void setRideEnCours(ArrayList<Ride> rideEnCours) {
+		this.rideEnCours = rideEnCours;
+	}
+
+	public static ArrayList<Ride> getRideFinies() {
+		return rideFinies;
+	}
+
+	public void setRideFinies(ArrayList<Ride> rideFinies) {
+		this.rideFinies = rideFinies;
+	}
+	
+	
+	
+	
 }

@@ -18,6 +18,7 @@ public class UberBlack extends Ride {
 		this.trafficRates.add(1.6);
 		
 		this.carType = "Berline";
+		this.type = "UberBlack";
 		
 	}
 	

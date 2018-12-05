@@ -72,6 +72,7 @@ public class MyUber {
 			//Association driver/car
 			for (int i = 0; i < nbCars; i++) {
 				listOfCars.get(i).addDriver(listOfDrivers.get(i));
+				listOfDrivers.get(i).addCar(listOfCars.get(i));
 			}
 			
 			//Creation Customer
@@ -104,7 +105,20 @@ public class MyUber {
 			}
 		return null;
 		}
+		
+	public static Car findCar(Driver driver, String type) {
+		ArrayList<Car> listeOfCar = driver.getCars();
+		for (Car car : listeOfCar) {
+			if (car.getType().equals(type) && car.getCarStatus().equals("available") ) {
+				return car;
+			}
+		}
 			
+		
+		return null;
+	}
+
+	
 	/// embarquement du passager
 	public static void faireUnRide(Ride ride, Car car, Driver driver) {
 		car.setCarStatus("non-available");

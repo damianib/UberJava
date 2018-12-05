@@ -2,8 +2,10 @@ package rides;
 
 import java.util.ArrayList;
 
+import car.Car;
 import myUber.MyUber;
 import myUber.Customer;
+import myUber.Driver;
 import myUber.GPS;
 
 public abstract class Ride {
@@ -18,6 +20,9 @@ public abstract class Ride {
 	protected double duration;
 	protected String carType;
 	protected Customer customer;
+	protected String type;
+	Driver driver;
+	Car car;
 	
 	
 	/// fonction qui renvoie le coefficient adapté à la longueur du trajet 
@@ -165,4 +170,30 @@ public abstract class Ride {
 		this.length = length;
 	}
 
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
+	
 }

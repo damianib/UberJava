@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import myUber.Customer;
+import rides.Ride;
+import rides.RideFactory;
 
 public class CustomerListener implements ActionListener {
 
@@ -56,7 +58,19 @@ public class CustomerListener implements ActionListener {
 	    	action.add(demarrer, BorderLayout.SOUTH);
 	    	
 	    }
-	    else if (this.customer.getStatus().equals("waiting")) {
+	    else if (this.customer.getStatus().equals("waiting_confirmation")) {
+	    	Ride ride = RideFactory.recupererRide(this.customer);
+	    	JPanel recap = new JPanel();
+	    	recap.setBackground(Color.white);
+	    	recap.add(new JLabel("Vous avez commander un " + ride.getType()));
+	    	JPanel temps = new JPanel();
+	    	temps.setBackground(Color.white);
+	    	temps.add(new JLabel("En attente de confirmation du conducteur "));
+	    	action.add(recap, BorderLayout.NORTH);
+	    	action.add(temps, BorderLayout.SOUTH);
+	    	JButton cancel = new JButton("annuler le ride");
+	    	cancel.addActionListener(new AnnulationConfirmation(ride, this.frame));
+	    	action.add(cancel);
 	    	
 	    }
 	    else if (this.customer.getStatus().equals("embarquement")) {

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,35 +31,46 @@ public class DriverListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		JPanel description = new JPanel();		
-		description.setBackground(Color.white);
-		description.setPreferredSize(new Dimension(500, 120));
-		description.setBorder(BorderFactory.createTitledBorder("Fiche conducteur"));
-		JLabel nomLabel = new JLabel("Nom : " + this.driver.getName());
-		JLabel prenomLabel = new JLabel("Prenom : " + this.driver.getSurname());
-		//JLabel gpsLabel = new JLabel("Votre position : " + this.driver.getGps());
-		description.add(nomLabel);
-		description.add(prenomLabel);
-		//description.add(gpsLabel);
+		JPanel description = JFrame1stExemple.getDriverDescription(this.driver);
 		
-		JPanel voiture = new JPanel();
-		voiture.setBackground(Color.white);
-		voiture.setPreferredSize(new Dimension(500,120));
-		voiture.setBorder(BorderFactory.createTitledBorder("Voiture associée"));
-		Car car = findCar(this.driver);
-		JLabel modelLabel = new JLabel("Modele de voiture : " + car.getType());
-		JLabel idLabel = new JLabel("L'id de la voiture : " + car.getCarID());
-		voiture.add(modelLabel);
-		voiture.add(idLabel);
-		
-		
+		JPanel voiture = JFrame1stExemple.getCarDescription(this.driver);
+
 		JPanel action = new JPanel();
 	    action.setBackground(Color.white);
 	    action.setPreferredSize(new Dimension(500, 120));
-	    action.setBorder(BorderFactory.createTitledBorder("Proposition correcte"));
-	    JLabel prop = new JLabel("JE VOUS BAISE");
-	    action.add(prop);
-		
+	    action.setBorder(BorderFactory.createTitledBorder("Situation"));
+	    if (this.driver.getState().equals("on-duty")) {
+	    	JLabel etat = new JLabel("Vous etes de service, et n'avez actuellement aucune demande");
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	JButton offDuty = new JButton("Get off-duty");
+	    	JButton offline = new JButton("Get offline");
+	    	offDuty.addActionListener(new GettingOff(this.driver, this.frame, "off-duty"));
+	    	offline.addActionListener(new GettingOff(this.driver, this.frame, "offline"));
+	    	action.add(etat);
+	    	action.add(offDuty);
+	    	action.add(offline);
+	    }
+	    else if (this.driver.getState().equals("offline") || this.driver.getState().equals("off-duty")) {
+	    	JLabel etat = new JLabel("Vous etes " + this.driver.getState());
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	JButton online = new JButton("Getting online");
+	    	online.addActionListener(new GettingOn(this.driver, this.frame));
+	    	action.add(etat);
+	    	action.add(online);
+	    }
+	    else if (this.driver.getState().equals("asked")) {
+	    	JLabel etat = new JLabel("Vous avez une demande de trajet !");
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	JButton agree = new JButton("Take the ride");
+	    	agree.addActionListener(new ConducteurAccepte(this.driver, this.frame));
+	    	action.setBackground(Color.green);
+	    	action.add(etat);
+	    	action.add(agree);
+	    }
+	    
+	    
+	    
+	    //fin
 	    JPanel panel = new JPanel ();
 	    panel.add(description, BorderLayout.NORTH);
 	    panel.add(voiture, BorderLayout.CENTER);
@@ -68,14 +80,6 @@ public class DriverListener implements ActionListener {
 		
 	}
 	
-	public Car findCar(Driver driver) {
-		ArrayList<Car> listeOfCar = CarFactory.getListOfCars();
-		for (Car car : listeOfCar) {
-			for (Driver driv : car.getDrivers()) {
-				if (driv == driver) { return car; }
-			}
-		}
-		return null;
-	}
+	
 
 }

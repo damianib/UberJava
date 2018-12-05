@@ -18,6 +18,7 @@ public class UberVan extends Ride {
 		this.trafficRates.add(1.8);
 		
 		this.carType = "Van";
+		this.type = "UberVan";
 	}
 	
 	
