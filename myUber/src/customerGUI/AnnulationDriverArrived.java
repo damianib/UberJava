@@ -20,9 +20,7 @@ public class AnnulationDriverArrived implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Ride ride = RideFactory.customerToRide(customer);
-		ride.setStatus("cancelled");
 		RideFactory.getRideEnCours().remove(ride);
-		BookOfRides.addEntry(ride.getCar(), ride.getDriver(), ride);
 		ride.getDriver().setState("cancelled");
 		customer.setStatus("free");
 		ride.getCar().setCarStatus("available");

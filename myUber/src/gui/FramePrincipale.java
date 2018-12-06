@@ -15,6 +15,9 @@ import car.Car;
 import car.CarFactory;
 import controlGUI.AjoutListener;
 import controlGUI.DeplacementListener;
+import guiStatistique.CustomerStat;
+import guiStatistique.DriverStat;
+import guiStatistique.GlobalStat;
 import myUber.Customer;
 import myUber.CustomerFactory;
 import myUber.Driver;
@@ -37,6 +40,7 @@ public class FramePrincipale {
 		JMenu menuCustomer = new JMenu("Customer");
 		JMenu menuDriver = new JMenu("Driver");
 		JMenu menuCar = new JMenu("Car");
+		JMenu menuStat = new JMenu("Statistiques");
 		
 		//implementer le menu car
 		for (Car car : CarFactory.getListOfCars()) {
@@ -54,17 +58,21 @@ public class FramePrincipale {
 		}
 		
 		//implementer le menu control
-		//createPageCreation(menuControl);
 		createPageAjout(menuControl, menuCustomer, menuDriver, menuCar, myFrame);
-		//createPageEDL(menuControl);
-		//createPageCompta(menuControl);
 		//createPageSimulation(menuControl);
 		createPageDeplacement(menuControl, myFrame);
+		
+		//implementer le menu statistiques
+		createPageStatDriver(menuStat, myFrame);
+		createPageStatCustomer(menuStat, myFrame);
+		createPageStatGlobal(menuStat, myFrame);
+		
 		
 		menuBar.add(menuControl);
 		menuBar.add(menuCustomer);
 		menuBar.add(menuDriver);
 		menuBar.add(menuCar);
+		menuBar.add(menuStat);
 		myFrame.setJMenuBar(menuBar);
 		
 		
@@ -73,6 +81,27 @@ public class FramePrincipale {
 		myFrame.setVisible(true);
 		
 	}
+	
+	
+	public static void createPageStatDriver(JMenu menu, JFrame myFrame) {
+		 JMenuItem page = new JMenuItem("Drivers");
+		 page.addActionListener(new DriverStat(myFrame));
+		 menu.add(page);
+		 
+	}
+	public static void createPageStatCustomer(JMenu menu, JFrame myFrame) {
+		 JMenuItem page = new JMenuItem("Customers");
+		 page.addActionListener(new CustomerStat(myFrame));
+		 menu.add(page);
+		 
+	}
+	public static void createPageStatGlobal(JMenu menu, JFrame myFrame) {
+		 JMenuItem page = new JMenuItem("Global");
+		 page.addActionListener(new GlobalStat(myFrame));
+		 menu.add(page);
+		 
+	}
+	
 	
 	public static void createPageAjout(JMenu menuControl,JMenu menuCustomer,JMenu menuDriver,JMenu menuCar, JFrame myFrame) {
 		JMenuItem page = new JMenuItem("Ajouts");

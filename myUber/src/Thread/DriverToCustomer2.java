@@ -33,9 +33,7 @@ public class DriverToCustomer2 extends TimerTask {
 
 	public void annulation() {
 		Ride ride = RideFactory.customerToRide(customer);
-		ride.setStatus("cancelled");
 		RideFactory.getRideEnCours().remove(ride);
-		BookOfRides.addEntry(car, driver, ride);
 		driver.setState("cancelled");
 		customer.setStatus("free");
 		car.setCarStatus("available");

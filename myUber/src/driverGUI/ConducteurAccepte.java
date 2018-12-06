@@ -30,7 +30,7 @@ public class ConducteurAccepte implements ActionListener {
 		DriverToCustomer2 driverToCustomer = new DriverToCustomer2(ride.getCustomer(), driver, ride.getCar());
 		
 		Timer timer = new Timer();
-	    timer.schedule (driverToCustomer, (long)driverToCustomer.getFakeRide().getDuration() *1 );
+	    timer.schedule (driverToCustomer, (long)driverToCustomer.getFakeRide().getDuration() *5 );
 		
 		RideFactory.listOfDriverToCustomer.add(driverToCustomer);
 		new DriverListener(driver, frame).actionPerformed(e);

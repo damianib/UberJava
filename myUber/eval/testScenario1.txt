@@ -1,0 +1,29 @@
+Aller dans src > gui > LancerProgram.java et executer le code contenu dans cette classe
+
+Cliquer sur "Let's Go" dans la première fenêtre (fait office d'ini)
+
+Aller dans Driver > Driver 2 puis cliquer sur "Getting Online"
+
+Aller dans Customer > Customer 2 puis cliquer sur "Rechercher un ride"
+
+Cliquer sur "ok"
+
+Cliquer sur "Choisir UberVan"
+
+Aller dans Driver > Driver 2 puis cliquer sur "Take the ride"
+
+Attendre 10s puis retourner sur Customer 2 et cliquer sur "J'ai embarqué"
+
+Attendre 10s puis recharger Customer 2 et cliquer sur Submit
+
+Aller dans Driver > Driver 2, cliquer sur "ok" et constater que l'évaluation a bien été prise en compte
+
+Aller dans Statistiques > Drivers et constater que Driver 2 est le meilleur Driver
+
+Aller dans Statistiques > Customers et constater que Customer 2 est le meilleur Customer
+
+Aller dans Control > Ajouts et cliquer sur "Ajout" dans la partie "Ajout d'un customer", constater dans la partie "Customer" l'apparition d'un Customer 5
+
+Aller dans Control > Deplacement, choisir "Customer 1" dans le menu déroulant et cliquer sur "ok" dans "Deplacer un Customer"
+
+Aller dans Customer > Customer 1 et constater que sa position a été remplacée par (10, 10)

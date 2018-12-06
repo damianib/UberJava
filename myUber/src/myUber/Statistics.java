@@ -9,12 +9,11 @@ import rides.Ride;
 
 public class Statistics {
 	
-	/**Renvoie les rides dont a fait partie un customer*/
+	/**Renvoie les rides dont a fait partie un customer */
 	public static ArrayList<Ride> getCustomerRides(BookOfRides bookOfRides, Customer customer) {
 		
 		ArrayList<Ride> listOfRides = bookOfRides.getRides();
 		ArrayList<Ride> customerRides = new ArrayList<Ride>();
-		
 		for (int i = 0; i < listOfRides.size(); i++) {
 			if (listOfRides.get(i).getCustomer() == customer) {
 				customerRides.add(listOfRides.get(i));
@@ -26,7 +25,7 @@ public class Statistics {
 	}
 				
 		
-	/**renvoie le nb total de rides d'un customer*/
+	/** renvoie le nb total de rides d'un customer */
 	public static int customerNumberOfRides(BookOfRides bookOfRides, Customer customer) {
 		
 		ArrayList<Ride> customerRides = getCustomerRides(bookOfRides, customer);
@@ -35,7 +34,7 @@ public class Statistics {
 	}
 	
 	
-	/**renvoie le temps total d'un customer passe dans des rides*/
+	/** renvoie le temps total d'un customer passe dans des rides */
 	public static double customerTotalTime(BookOfRides bookOfRides, Customer customer) {
 		
 		ArrayList<Ride> customerRides = getCustomerRides(bookOfRides, customer);
@@ -90,6 +89,19 @@ public class Statistics {
 	}
 	
 	
+	/** renvoie le temps total d'un driver passe dans des rides */
+	public static double driverTotalTime(BookOfRides bookOfRides, Driver driver) {
+		
+		ArrayList<Ride> driverRides = getDriverRides(bookOfRides, driver);
+		double totalTime = 0.;
+		for (int i = 0; i < driverRides.size(); i++) {
+			Ride currentRide = driverRides.get(i);
+			totalTime = totalTime + currentRide.getDuration(); 
+		}
+		return totalTime;
+	}
+	
+	
 	/**renvoie le montant total gagne par un driver*/
 	public static double driverTotalRate(BookOfRides bookOfRides, Driver driver) {
 		
@@ -125,6 +137,22 @@ public class Statistics {
 		
 	}
 	
+	/**renvoie le temps total*/
+	public static double totalTime(BookOfRides bookOfRides) {
+		
+		ArrayList<Ride> listOfRides = bookOfRides.getRides();
+		double totalTime = 0;
+		for(int i = 0; i < listOfRides.size(); i++) {
+			Ride currentRide = listOfRides.get(i);
+			totalTime = totalTime + currentRide.getDuration();
+		}
+		return totalTime;
+		
+	}
+	
+	
+	
+	
 	
 	/**Permet de comparer les clients par nombre de rides (decroissant)*/
 	public static class sortByNumberOfRides implements Comparator<Customer>{
@@ -139,9 +167,9 @@ public class Statistics {
 			int na = customerNumberOfRides(this.bookOfRides, a);
 			int nb = customerNumberOfRides(this.bookOfRides, b);
 			if (nb > na) {
-				return -1;
-			} else if (nb < na) {
 				return 1;
+			} else if (nb < na) {
+				return -1;
 			} else {
 				return 0;
 			}
@@ -159,6 +187,42 @@ public class Statistics {
 	}
 	
 	
+	/**Permet de comparer les clients par temps total (decroissant)*/
+	public static class sortByTotalTime implements Comparator<Customer>{
+		
+		BookOfRides bookOfRides;
+		
+		public sortByTotalTime(BookOfRides bookOfRides) {
+			this.bookOfRides = bookOfRides;
+		}
+		
+		public int compare(Customer a, Customer b) {
+			double na = customerTotalTime(this.bookOfRides, a);
+			double nb = customerTotalTime(this.bookOfRides, b);
+			if (nb > na) {
+				return 1;
+			} else if (nb < na) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+		
+	}
+	
+	/**Renvoie la liste client classes par nombre de rides decroissant*/
+	public static ArrayList<Customer> customersSortedByTime(BookOfRides bookOfRides){
+		
+		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
+		Collections.sort(listOfCustomers, new sortByTotalTime(bookOfRides));
+		return listOfCustomers;
+		
+	}
+	
+	
+	
+	
+	
 	/**Permet de comparer les clients par total cash paye (decroissant)*/
 	public static class sortByTotalRate implements Comparator<Customer>{
 			
@@ -172,9 +236,9 @@ public class Statistics {
 			double da = customerTotalRate(this.bookOfRides, a);
 			double db = customerTotalRate(this.bookOfRides, b);
 			if (db>da) {
-				return -1;
-			} else if (db<da) {
 				return 1;
+			} else if (db<da) {
+				return -1;
 			} else {
 				return 0;
 			}
@@ -192,6 +256,10 @@ public class Statistics {
 	}
 	
 	
+	
+	
+	
+	
 	/**Trie les drivers selon leur evaluation (decroissant)*/
 	public static class sortByEvaluation implements Comparator<Driver>{
 		
@@ -205,9 +273,9 @@ public class Statistics {
 			double da = a.getEvaluation();
 			double db = b.getEvaluation();
 			if (db>da) {
-				return -1;
-			} else if (db<da) {
 				return 1;
+			} else if (db<da) {
+				return -1;
 			} else {
 				return 0;
 			}
@@ -215,7 +283,7 @@ public class Statistics {
 		
 	}
 	
-	/**Renvoie la liste client classes par nombre de rides decroissant*/
+	/**Renvoie la liste driver classes par nombre de rides decroissant*/
 	public static ArrayList<Driver> driversSortedByEvaluation(BookOfRides bookOfRides){
 		
 		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
@@ -223,5 +291,108 @@ public class Statistics {
 		return listOfDrivers;
 		
 	}
+	
+	
+	
+	/**Trie les drivers selon leur nombre de ride (decroissant)*/
+	public static class sortByNbrRide implements Comparator<Driver>{
+		
+		BookOfRides bookOfRides;
+		
+		public sortByNbrRide(BookOfRides bookOfRides) {
+			this.bookOfRides = bookOfRides;
+		}
+		
+		public int compare(Driver a, Driver b) {
+			double da = driverNumberOfRides(bookOfRides, a);
+			double db = driverNumberOfRides(bookOfRides, b);
+			if (db>da) {
+				return 1;
+			} else if (db<da) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+		
+	}
+	
+	/**Renvoie la liste driver classes par nombre de rides decroissant*/
+	public static ArrayList<Driver> driversSortedByNbrRides(BookOfRides bookOfRides){
+		
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
+		Collections.sort(listOfDrivers, new sortByNbrRide(bookOfRides));
+		return listOfDrivers;
+		
+	}
+	
+	
+	
+	/**Trie les drivers selon leur montant total gagné (decroissant)*/
+	public static class sortByRate implements Comparator<Driver>{
+		
+		BookOfRides bookOfRides;
+		
+		public sortByRate(BookOfRides bookOfRides) {
+			this.bookOfRides = bookOfRides;
+		}
+		
+		public int compare(Driver a, Driver b) {
+			double da = driverTotalRate(bookOfRides, a);
+			double db = driverTotalRate(bookOfRides, b);
+			if (db>da) {
+				return 1;
+			} else if (db<da) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+		
+	}
+	
+	/**Renvoie la liste driver classes par prix decroissant*/
+	public static ArrayList<Driver> driversSortedByRate(BookOfRides bookOfRides){
+		
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
+		Collections.sort(listOfDrivers, new sortByRate(bookOfRides));
+		return listOfDrivers;
+		
+	}
 
+	
+	
+	/**Trie les drivers selon leur temps de ride (decroissant)*/
+	public static class sortByTime implements Comparator<Driver>{
+		
+		BookOfRides bookOfRides;
+		
+		public sortByTime(BookOfRides bookOfRides) {
+			this.bookOfRides = bookOfRides;
+		}
+		
+		public int compare(Driver a, Driver b) {
+			double da = driverTotalTime(bookOfRides, a);
+			double db = driverTotalTime(bookOfRides, b);
+			if (db>da) {
+				return 1;
+			} else if (db<da) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+		
+	}
+	
+	/**Renvoie la liste driver classes par nombre de rides decroissant*/
+	public static ArrayList<Driver> driversSortedByTime(BookOfRides bookOfRides){
+		
+		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
+		Collections.sort(listOfDrivers, new sortByTime(bookOfRides));
+		return listOfDrivers;
+		
+	}
+	
+	
 }

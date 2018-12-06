@@ -2503,6 +2503,121 @@
         <packagedElement xmi:type="uml:Abstraction" xmi:id="_QCMHkPlEEeivS8idtmvP3A" client="_G1g8oPlEEeivS8idtmvP3A" supplier="_GxnUEPlEEeivS8idtmvP3A"/>
         <packagedElement xmi:type="uml:Abstraction" xmi:id="_STs3MPlEEeivS8idtmvP3A" client="_G17zYPlEEeivS8idtmvP3A" supplier="_GxnUEPlEEeivS8idtmvP3A"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_4D1BoPmeEeiZifQlHTxDwQ" name="Thread">
+        <packagedElement xmi:type="uml:Class" xmi:id="_4Eeh4PmeEeiZifQlHTxDwQ" name="DriverToCustomer2" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_4EjaYPmeEeiZifQlHTxDwQ" general="_BNmZQPlBEeivhbvwivg94g"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4EvnoPmeEeiZifQlHTxDwQ" name="customer" visibility="private" type="_XYVOsPlEEeivS8idtmvP3A" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4E5YoPmeEeiZifQlHTxDwQ" name="driver" visibility="private" type="_XbJSIPlEEeivS8idtmvP3A" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4E_fQPmeEeiZifQlHTxDwQ" name="car" visibility="private" type="_WY3LMPlDEeivS8idtmvP3A" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4FAtYPmeEeiZifQlHTxDwQ" name="fakeRide" visibility="private" type="_GxnUEPlEEeivS8idtmvP3A" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4FvtMPmeEeiZifQlHTxDwQ" name="DriverToCustomer2" specification="_4FBUcPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.customer = customer;&#xD;
+    this.driver = driver;&#xD;
+    this.car = car;&#xD;
+    fakeRide = RideFactory.createRide(customer, MyUber.correspondanceCarToRide(car.getType()), car.getCarGPS(), customer.getGps());&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4F3B8PmeEeiZifQlHTxDwQ" name="run" specification="_4F1MwPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    driver.setState(&quot;waiting&quot;);&#xD;
+    customer.setStatus(&quot;driver_arrived&quot;);&#xD;
+    car.setCarGPS(customer.getGps());&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4F-9wPmeEeiZifQlHTxDwQ" name="annulation" specification="_4F8hgPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    Ride ride = RideFactory.customerToRide(customer);&#xD;
+    RideFactory.getRideEnCours().remove(ride);&#xD;
+    driver.setState(&quot;cancelled&quot;);&#xD;
+    customer.setStatus(&quot;free&quot;);&#xD;
+    car.setCarStatus(&quot;available&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4GLyEPmeEeiZifQlHTxDwQ" name="getCustomer" specification="_4F_k0PmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return customer;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4GXYQPmeEeiZifQlHTxDwQ" name="setCustomer" specification="_4GQqkPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.customer = customer;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4GhJQPmeEeiZifQlHTxDwQ" name="getDriver" specification="_4GbpsPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return driver;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4GukoPmeEeiZifQlHTxDwQ" name="setDriver" specification="_4Gn28PmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.driver = driver;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4G3HgPmeEeiZifQlHTxDwQ" name="getCar" specification="_4GzdIPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return car;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4HCtsPmeEeiZifQlHTxDwQ" name="setCar" specification="_4G9OIPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.car = car;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4HOT4PmeEeiZifQlHTxDwQ" name="getFakeRide" specification="_4HGYEPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return fakeRide;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_4HYE4PmeEeiZifQlHTxDwQ" name="setFakeRide" specification="_4HSlUPmeEeiZifQlHTxDwQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.fakeRide = fakeRide;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4FBUcPmeEeiZifQlHTxDwQ" name="DriverToCustomer2" visibility="public" method="_4FvtMPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4FVdgPmeEeiZifQlHTxDwQ" name="customer" type="_XYVOsPlEEeivS8idtmvP3A"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4FhqwPmeEeiZifQlHTxDwQ" name="driver" type="_XbJSIPlEEeivS8idtmvP3A"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4FnKUPmeEeiZifQlHTxDwQ" name="car" type="_WY3LMPlDEeivS8idtmvP3A"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4F1MwPmeEeiZifQlHTxDwQ" name="run" visibility="public" method="_4F3B8PmeEeiZifQlHTxDwQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4F8hgPmeEeiZifQlHTxDwQ" name="annulation" visibility="public" method="_4F-9wPmeEeiZifQlHTxDwQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4F_k0PmeEeiZifQlHTxDwQ" name="getCustomer" visibility="public" method="_4GLyEPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4GIHsPmeEeiZifQlHTxDwQ" type="_XYVOsPlEEeivS8idtmvP3A" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4GQqkPmeEeiZifQlHTxDwQ" name="setCustomer" visibility="public" method="_4GXYQPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4GUU8PmeEeiZifQlHTxDwQ" name="customer" type="_XYVOsPlEEeivS8idtmvP3A"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4GbpsPmeEeiZifQlHTxDwQ" name="getDriver" visibility="public" method="_4GhJQPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4GetAPmeEeiZifQlHTxDwQ" type="_XbJSIPlEEeivS8idtmvP3A" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4Gn28PmeEeiZifQlHTxDwQ" name="setDriver" visibility="public" method="_4GukoPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4GrhUPmeEeiZifQlHTxDwQ" name="driver" type="_XbJSIPlEEeivS8idtmvP3A"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4GzdIPmeEeiZifQlHTxDwQ" name="getCar" visibility="public" method="_4G3HgPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4G2gcPmeEeiZifQlHTxDwQ" type="_WY3LMPlDEeivS8idtmvP3A" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4G9OIPmeEeiZifQlHTxDwQ" name="setCar" visibility="public" method="_4HCtsPmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4HARcPmeEeiZifQlHTxDwQ" name="car" type="_WY3LMPlDEeivS8idtmvP3A"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4HGYEPmeEeiZifQlHTxDwQ" name="getFakeRide" visibility="public" method="_4HOT4PmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4HL3oPmeEeiZifQlHTxDwQ" type="_GxnUEPlEEeivS8idtmvP3A" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4HSlUPmeEeiZifQlHTxDwQ" name="setFakeRide" visibility="public" method="_4HYE4PmeEeiZifQlHTxDwQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4HWPsPmeEeiZifQlHTxDwQ" name="fakeRide" type="_GxnUEPlEEeivS8idtmvP3A"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_0TlZ4PlAEeivhbvwivg94g" name="java">
       <packagedElement xmi:type="uml:Package" xmi:id="_0TqSYPlAEeivhbvwivg94g" name="java">
@@ -2639,8 +2754,8 @@
   <standard:Create xmi:id="_XaIlgPlEEeivS8idtmvP3A" base_BehavioralFeature="_XaE7IPlEEeivS8idtmvP3A"/>
   <standard:Create xmi:id="_XdGZ8PlEEeivS8idtmvP3A" base_BehavioralFeature="_XdD9sPlEEeivS8idtmvP3A"/>
   <PapyrusJava:External xmi:id="_oTfvUPlEEeivS8idtmvP3A" name="BookOfRides" base_Classifier="_oTbd4PlEEeivS8idtmvP3A"/>
-  <PapyrusJava:External xmi:id="_oUM58PlEEeivS8idtmvP3A" name="Driver" base_Classifier="_XbJSIPlEEeivS8idtmvP3A"/>
-  <PapyrusJava:External xmi:id="_oUyIwPlEEeivS8idtmvP3A" name="Customer" base_Classifier="_XYVOsPlEEeivS8idtmvP3A"/>
+  <PapyrusJava:External xmi:id="_oUM58PlEEeivS8idtmvP3A" name="myUber.Driver" base_Classifier="_XbJSIPlEEeivS8idtmvP3A"/>
+  <PapyrusJava:External xmi:id="_oUyIwPlEEeivS8idtmvP3A" name="myUber.Customer" base_Classifier="_XYVOsPlEEeivS8idtmvP3A"/>
   <PapyrusJava:External xmi:id="_N1OxsPlNEeiIRo6KT8HXxQ" name="rides.Ride" base_Classifier="_GxnUEPlEEeivS8idtmvP3A"/>
   <standard:Create xmi:id="_N1jh0PlNEeiIRo6KT8HXxQ" base_BehavioralFeature="_N1cNEPlNEeiIRo6KT8HXxQ"/>
   <standard:Create xmi:id="_N3WRmPlNEeiIRo6KT8HXxQ" base_BehavioralFeature="_N3WRl_lNEeiIRo6KT8HXxQ"/>
@@ -2651,4 +2766,5 @@
   <standard:Create xmi:id="_N6fFIPlNEeiIRo6KT8HXxQ" base_BehavioralFeature="_N6bawPlNEeiIRo6KT8HXxQ"/>
   <PapyrusJava:StaticClassifier xmi:id="_N7HXQPlNEeiIRo6KT8HXxQ" base_Classifier="_N7BQoPlNEeiIRo6KT8HXxQ"/>
   <standard:Create xmi:id="_N7PTEPlNEeiIRo6KT8HXxQ" base_BehavioralFeature="_N7LBoPlNEeiIRo6KT8HXxQ"/>
+  <standard:Create xmi:id="_4FOIwPmeEeiZifQlHTxDwQ" base_BehavioralFeature="_4FBUcPmeEeiZifQlHTxDwQ"/>
 </xmi:XMI>

@@ -102,7 +102,7 @@ public class CustomerListener implements ActionListener {
 	    else if (this.customer.getStatus().contentEquals("on-a-ride")) {
 	    	JLabel etat = new JLabel("Nous esperons que vous profitez de votre voyage :)");
 	    	etat.setPreferredSize(new Dimension(400,40));
-	    	action.setBackground(Color.blue);
+	    	action.setBackground(Color.orange);
 	    	action.add(etat);
 	    }
 	    else if (this.customer.getStatus().contentEquals("asked_eval")) {

@@ -22,9 +22,7 @@ public class AnnulationConfirmation implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.ride.getCustomer().setStatus("free");
 		this.ride.getDriver().setState("on-duty");
-		this.ride.setStatus("Canceled_before_driver_confirmation");
 		RideFactory.getRideEnCours().remove(this.ride);
-		BookOfRides.addEntry(ride.getCar(), ride.getDriver(), ride);
 		new CustomerListener(this.ride.getCustomer(), this.frame).actionPerformed(e);	
 	}
 
