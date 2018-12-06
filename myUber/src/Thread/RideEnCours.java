@@ -1,10 +1,10 @@
-package myUber;
+package Thread;
 
 import java.util.TimerTask;
 
 import car.Car;
+import myUber.Driver;
 import rides.Ride;
-import rides.RideFactory;
 
 public class RideEnCours extends TimerTask {
 	
@@ -27,11 +27,11 @@ public class RideEnCours extends TimerTask {
 	@Override
 	public void run() {
 		ride.setStatus("completed");
-		RideFactory.getRideEnCours().remove(ride);
-		RideFactory.getRideFinies().add(ride);
-		driver.setState("on-duty");
+		car.setCarGPS(ride.getArrivee());
+		ride.getCustomer().setGps(ride.getArrivee());
+		driver.setState("end_ride");
 		car.setCarStatus("available");
-		ride.getCustomer().setStatus("free");
+		ride.getCustomer().setStatus("asked_eval");
 		
 	}
 

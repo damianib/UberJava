@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -13,15 +12,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import car.Car;
-import car.CarFactory;
+import driverGUI.AnnulationConfirmee;
+import driverGUI.ConducteurAccepte;
+import driverGUI.GettingOff;
+import driverGUI.GettingOn;
 import myUber.Driver;
 
 public class DriverListener implements ActionListener {
 
 	Driver driver;
 	JFrame frame;
-	DriverListener (Driver driv, JFrame fra) {
+	public DriverListener (Driver driv, JFrame fra) {
 		this.driver = driv;
 		this.frame = fra;
 	}
@@ -31,9 +32,9 @@ public class DriverListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		JPanel description = JFrame1stExemple.getDriverDescription(this.driver);
+		JPanel description = FramePrincipale.getDriverDescription(this.driver);
 		
-		JPanel voiture = JFrame1stExemple.getCarDescription(this.driver);
+		JPanel voiture = FramePrincipale.getCarDescription(this.driver);
 
 		JPanel action = new JPanel();
 	    action.setBackground(Color.white);
@@ -91,6 +92,15 @@ public class DriverListener implements ActionListener {
 	    	etat.setPreferredSize(new Dimension(500, 40));
 	    	action.setBackground(Color.orange);
 	    	action.add(etat);
+	    }
+	    else if (this.driver.getState().equals("end_ride")) {
+	    	JLabel etat = new JLabel("Le ride est terminé !");
+	    	etat.setPreferredSize(new Dimension(500, 40));
+	    	action.setBackground(Color.orange);
+	    	action.add(etat);
+	    	JButton ok = new JButton("Ok");
+	    	ok.addActionListener(new GettingOn(this.driver, this.frame));
+	    	action.add(ok);
 	    }
 	    
 	    //fin

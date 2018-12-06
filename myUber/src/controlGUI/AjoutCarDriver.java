@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import car.Car;
 import car.CarFactory;
-import gui.JFrame1stExemple;
+import gui.FramePrincipale;
 import myUber.Driver;
 import myUber.DriverFactory;
 import myUber.GPS;
@@ -35,8 +35,8 @@ public class AjoutCarDriver implements ActionListener {
 		Car car = CarFactory.getListOfCars().get(CarFactory.getListOfCars().size()-1);
 		car.addDriver(driver);
 		driver.addCar(car);
-		JFrame1stExemple.createPageCar(menuCar, car, frame);
-		JFrame1stExemple.createPageDriver(menuDriver, driver, frame);
+		FramePrincipale.createPageCar(menuCar, car, frame);
+		FramePrincipale.createPageDriver(menuDriver, driver, frame);
 		
 	}
 

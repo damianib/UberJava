@@ -1,4 +1,4 @@
-package gui;
+package customerGUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import gui.CustomerListener;
+import gui.FramePrincipale;
 import myUber.Customer;
 import myUber.GPS;
 import rides.Ride;
@@ -39,7 +41,7 @@ public class EnvoyerPrix implements ActionListener {
 		
 		this.arrivee = new GPS(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
 		
-		JPanel description = JFrame1stExemple.getCustomerDescription(this.customer);
+		JPanel description = FramePrincipale.getCustomerDescription(this.customer);
 		
 		JPanel action = new JPanel();
 		action.setBackground(Color.white);

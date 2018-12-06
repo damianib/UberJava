@@ -7,11 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JTextField;
 
-import gui.JFrame1stExemple;
+import gui.FramePrincipale;
 import myUber.Customer;
 import myUber.CustomerFactory;
-import myUber.Driver;
-import myUber.DriverFactory;
 import myUber.GPS;
 
 public class AjoutCustomer implements ActionListener {
@@ -26,7 +24,7 @@ public class AjoutCustomer implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		CustomerFactory.createCustomer(name.getText(), surname.getText(), "random", GPS.randGPS());
 		Customer customer = CustomerFactory.getListOfCustomers().get(CustomerFactory.getListOfCustomers().size()-1);
-		JFrame1stExemple.createPageCustomer(menuCustomer, customer, frame);
+		FramePrincipale.createPageCustomer(menuCustomer, customer, frame);
 		
 	}
 

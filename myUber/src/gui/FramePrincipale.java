@@ -4,16 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import car.Car;
 import car.CarFactory;
@@ -23,15 +19,17 @@ import myUber.Customer;
 import myUber.CustomerFactory;
 import myUber.Driver;
 import myUber.DriverFactory;
-import myUber.MyUber;
 
-public class JFrame1stExemple {
-	public static void main(String[] args) {
+public class FramePrincipale {
+	
+	
+	public static void lancer() {
 		
-		MyUber.setup(0, 2, 3, 4);
+		//MyUber.setup(0, 2, 3, 4);
 		
 		JFrame myFrame =new JFrame("myUber controler");
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setPreferredSize(new Dimension(1000, 1000));
 		
 		// creer les menus déroulant
 		JMenuBar menuBar = new JMenuBar();
@@ -126,9 +124,13 @@ public class JFrame1stExemple {
 		description.setPreferredSize(new Dimension(500, 120));
 		description.setBorder(BorderFactory.createTitledBorder("Fiche conducteur"));
 		JLabel nomLabel = new JLabel("Nom : " + driver.getName());
+		nomLabel.setPreferredSize(new Dimension(400,30));
 		JLabel prenomLabel = new JLabel("Prenom : " + driver.getSurname());
+		prenomLabel.setPreferredSize(new Dimension(400,30));
+		JLabel evaluation = new JLabel("Votre evaluation : " + Double.toString(driver.getEvaluation()));
 		description.add(nomLabel);
 		description.add(prenomLabel);
+		description.add(evaluation);
 		return description;
 		
 	}

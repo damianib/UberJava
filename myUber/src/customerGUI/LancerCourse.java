@@ -1,4 +1,4 @@
-package gui;
+package customerGUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 
 import car.Car;
 import car.CarFactory;
+import gui.CustomerListener;
+import gui.FramePrincipale;
 import myUber.Driver;
 import myUber.MyUber;
 import rides.Ride;
@@ -45,7 +47,7 @@ public class LancerCourse implements ActionListener {
 			
 		}
 		else {
-			JPanel description = JFrame1stExemple.getCustomerDescription(this.ride.getCustomer());
+			JPanel description = FramePrincipale.getCustomerDescription(this.ride.getCustomer());
 			JPanel action = new JPanel();
 			action.setBackground(Color.white);
 		    action.setPreferredSize(new Dimension(500, 300));

@@ -4,11 +4,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import myUber.DriverFactory;
+
 class DriverFactoryTest {
 
 	@Test
 	void testCreateDriver() {
-		fail("Not yet implemented");
+		
+		try {
+			DriverFactory.createDriver("name", "surname");
+			assertTrue(true);
+		} catch (Exception e) {
+			fail("Exception raised");
+		}
+		
+		
+		
 	}
 
 }

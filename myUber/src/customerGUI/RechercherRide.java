@@ -1,4 +1,4 @@
-package gui;
+package customerGUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,14 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import gui.CustomerListener;
+import gui.FramePrincipale;
 import myUber.Customer;
-import myUber.GPS;
 
 public class RechercherRide implements ActionListener {
 
 	Customer customer;
 	JFrame frame;
-	RechercherRide(Customer cust, JFrame fra) {
+	public RechercherRide(Customer cust, JFrame fra) {
 		this.customer = cust;
 		this.frame = fra;
 	}
@@ -28,7 +29,7 @@ public class RechercherRide implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		JPanel description = JFrame1stExemple.getCustomerDescription(this.customer);
+		JPanel description = FramePrincipale.getCustomerDescription(this.customer);
 		
 		JPanel action = new JPanel();
 		action.setBackground(Color.white);
@@ -58,7 +59,6 @@ public class RechercherRide implements ActionListener {
 	    cancel.addActionListener(new CustomerListener(this.customer, this.frame));
 	    action.add(cancel);
 	    
-	    //PS ptArrivee = new GPS(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
 		
 	    JPanel panel = new JPanel ();
 	    panel.add(description, BorderLayout.NORTH);

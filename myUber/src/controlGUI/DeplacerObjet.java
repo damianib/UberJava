@@ -7,11 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import car.Car;
-import car.CarFactory;
-import gui.JFrame1stExemple;
-import myUber.Customer;
-import myUber.CustomerFactory;
+import gui.FramePrincipale;
 import myUber.GPS;
 
 public class DeplacerObjet implements ActionListener {
@@ -34,8 +30,8 @@ public class DeplacerObjet implements ActionListener {
 		
 		GPS gps = new GPS(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText()));
 		
-		if (type.equals("car")) { JFrame1stExemple.idToCar((String) box.getSelectedItem()).setCarGPS(gps); }
-		else if (type.equals("customer")) { JFrame1stExemple.idToCustomer((String) box.getSelectedItem()).setGps(gps); }
+		if (type.equals("car")) { FramePrincipale.idToCar((String) box.getSelectedItem()).setCarGPS(gps); }
+		else if (type.equals("customer")) { FramePrincipale.idToCustomer((String) box.getSelectedItem()).setGps(gps); }
 		 
 		
 	}

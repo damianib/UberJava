@@ -9,7 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JTextField;
 
 import car.Car;
-import gui.JFrame1stExemple;
+import gui.FramePrincipale;
 import myUber.Driver;
 import myUber.DriverFactory;
 
@@ -28,10 +28,10 @@ public class AjoutDriver implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		DriverFactory.createDriver(name.getText(), surname.getText());
 		Driver driver = DriverFactory.getListOfDrivers().get(DriverFactory.getListOfDrivers().size()-1);
-		Car car = JFrame1stExemple.idToCar((String) box.getSelectedItem());
+		Car car = FramePrincipale.idToCar((String) box.getSelectedItem());
 		car.addDriver(driver);
 		driver.addCar(car);
-		JFrame1stExemple.createPageDriver(menuDriver, driver, frame);
+		FramePrincipale.createPageDriver(menuDriver, driver, frame);
 	}
 
 }

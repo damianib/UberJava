@@ -7,9 +7,9 @@ import rides.Ride;
 
 public class BookOfRides {
 	
-	private ArrayList<Car> cars = new ArrayList<Car>();
-	private ArrayList<Driver> drivers = new ArrayList<Driver>();
-	private ArrayList<Ride> rides = new ArrayList<Ride>();
+	private static ArrayList<Car> cars = new ArrayList<Car>();
+	private static ArrayList<Driver> drivers = new ArrayList<Driver>();
+	private static ArrayList<Ride> rides = new ArrayList<Ride>();
 	
 	public BookOfRides() {
 		super();
@@ -35,10 +35,10 @@ public class BookOfRides {
 	}
 	
 	/** Permet d'ajouter une entree au bookOfRides */
-	public void addEntry(Car car, Driver driver, Ride ride) {
-		this.cars.add(car);
-		this.drivers.add(driver);
-		this.rides.add(ride);
+	public static void addEntry(Car car, Driver driver, Ride ride) {
+		cars.add(car);
+		drivers.add(driver);
+		rides.add(ride);
 	}
 
 }

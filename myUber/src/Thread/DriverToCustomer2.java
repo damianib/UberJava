@@ -1,12 +1,9 @@
-package gui;
+package Thread;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
 import java.util.TimerTask;
 
 import car.Car;
-import car.CarFactory;
+import myUber.BookOfRides;
 import myUber.Customer;
 import myUber.Driver;
 import myUber.MyUber;
@@ -31,20 +28,20 @@ public class DriverToCustomer2 extends TimerTask {
 	public void run() {
 		driver.setState("waiting");
 		customer.setStatus("driver_arrived");
+		car.setCarGPS(customer.getGps());
     }
 
 	public void annulation() {
 		Ride ride = RideFactory.customerToRide(customer);
 		ride.setStatus("cancelled");
 		RideFactory.getRideEnCours().remove(ride);
-		RideFactory.getRideFinies().add(ride);
+		BookOfRides.addEntry(car, driver, ride);
 		driver.setState("cancelled");
 		customer.setStatus("free");
 		car.setCarStatus("available");
 	}
 
 
-	// getters and setters
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -69,10 +66,7 @@ public class DriverToCustomer2 extends TimerTask {
 	public void setFakeRide(Ride fakeRide) {
 		this.fakeRide = fakeRide;
 	}
-	
-	
-	
-	
+
 	
 	
 }

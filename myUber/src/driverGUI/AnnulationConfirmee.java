@@ -1,17 +1,18 @@
-package gui;
+package driverGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import gui.DriverListener;
 import myUber.Driver;
 
 public class AnnulationConfirmee implements ActionListener {
 
 	Driver driver;
 	JFrame frame;
-	AnnulationConfirmee (Driver driver, JFrame frame) { this.frame = frame; this.driver = driver;}
+	public AnnulationConfirmee (Driver driver, JFrame frame) { this.frame = frame; this.driver = driver;}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

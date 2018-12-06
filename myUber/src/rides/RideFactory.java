@@ -2,8 +2,7 @@ package rides;
 
 import java.util.ArrayList;
 
-
-import gui.DriverToCustomer2;
+import Thread.DriverToCustomer2;
 import myUber.Customer;
 import myUber.Driver;
 import myUber.GPS;
@@ -11,7 +10,6 @@ import myUber.GPS;
 public class RideFactory {
 	
 	static ArrayList<Ride> rideEnCours = new ArrayList<Ride>();
-	static ArrayList<Ride> rideFinies = new ArrayList<Ride>();
 	public static ArrayList<DriverToCustomer2> listOfDriverToCustomer = new ArrayList<DriverToCustomer2>();
 	protected static ArrayList<Ride> poolRequests = new ArrayList<Ride>();
 	
@@ -100,12 +98,7 @@ public class RideFactory {
 	public void setRideEnCours(ArrayList<Ride> rideEnCours) {
 		this.rideEnCours = rideEnCours;
 	}
-	public static ArrayList<Ride> getRideFinies() {
-		return rideFinies;
-	}
-	public void setRideFinies(ArrayList<Ride> rideFinies) {
-		this.rideFinies = rideFinies;
-	}
+	
 	
 	
 	

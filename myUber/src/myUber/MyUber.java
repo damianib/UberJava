@@ -3,14 +3,17 @@ package myUber;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.Timer;
 
+import javax.swing.JFrame;
+
+import Thread.RideEnCours;
 import rides.Ride;
 import rides.RideFactory;
 
 import car.Car;
 import car.CarFactory;
+import gui.Setup;
 
 public class MyUber {
 	
@@ -18,32 +21,9 @@ public class MyUber {
 	
 	
 	public static void main(String[] args) {
-		
-		setup(1, 1, 1, 5);
-		
-		ArrayList<Driver> listOfDrivers = DriverFactory.getListOfDrivers();
-		ArrayList<Car> listOfCars = CarFactory.getListOfCars();
-		ArrayList<Customer> listOfCustomers = CustomerFactory.getListOfCustomers();
-		
-		ArrayList<Customer> listWait = new ArrayList<Customer>(listOfCustomers);
-		
-		while (!(listWait.size() == 0)) {
-			Customer customer = listWait.get(0);
-			listWait.remove(0);
-			String typeRide = RideAlea();
-			Ride ride = RideFactory.createRide(customer, typeRide, customer.getGps(), GPS.randGPS());
-			Car car = trouverVoiture(ride.getCarType(), customer.getGps(), listOfCars);
-			if (car == null) {
-				listWait.add(customer);
-			}
-			else {
-				System.out.println("ca part !");
-				Driver driver = trouverConducteur(car);
-				faireUnRide(ride, car, driver);
-			}	
-			
-		}
+		Setup.start();
 	}
+	
 	
 	/**cree et initie les voitures et clients, avec un conducteur par voiture
 	 * 

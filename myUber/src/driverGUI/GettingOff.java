@@ -1,10 +1,11 @@
-package gui;
+package driverGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import gui.DriverListener;
 import myUber.Driver;
 
 public class GettingOff implements ActionListener {
@@ -12,7 +13,7 @@ public class GettingOff implements ActionListener {
 	JFrame frame;
 	Driver driver;
 	String status;
-	GettingOff(Driver driver, JFrame frame, String status) {
+	public GettingOff(Driver driver, JFrame frame, String status) {
 		this.frame = frame;
 		this.driver = driver;
 		this.status = status;

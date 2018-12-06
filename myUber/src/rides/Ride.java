@@ -16,7 +16,7 @@ public abstract class Ride {
 	protected GPS depart;
 	protected GPS arrivee;
 	protected double length;
-	protected String traffic = MyUber.getTraffic();
+	protected String traffic;
 	protected double duration;
 	protected String carType;
 	protected Customer customer;
@@ -81,16 +81,17 @@ public abstract class Ride {
 	}
 
 	
-	/** Constructor*/
+	/** Constructor */
 	public Ride(Customer customer, GPS depart, GPS arrivee) {
 		this.depart = depart;
 		this.arrivee = arrivee;
+		this.traffic = MyUber.getTraffic();
 		this.length = GPS.distance(depart, arrivee);
 		this.duration = duration(this.traffic);
 		this.customer = customer;
 	}
 	
-	//getters and setters
+	/** getters and setters */
 	public Customer getCustomer() {
 		return customer;
 	}

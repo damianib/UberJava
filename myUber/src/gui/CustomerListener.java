@@ -8,11 +8,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import customerGUI.AnnulationConfirmation;
+import customerGUI.AnnulationDriverArrived;
+import customerGUI.AnnulationDriverToCustomer;
+import customerGUI.Eval;
+import customerGUI.LeRideEstLance;
+import customerGUI.RechercherRide;
+import customerGUI.SetFree;
 import myUber.Customer;
 import rides.Ride;
 import rides.RideFactory;
@@ -22,7 +29,7 @@ public class CustomerListener implements ActionListener {
 	
 	Customer customer;
 	JFrame frame;
-	CustomerListener(Customer cust, JFrame fra) {
+	public CustomerListener(Customer cust, JFrame fra) {
 		this.customer = cust;
 		this.frame = fra;
 	}
@@ -32,7 +39,7 @@ public class CustomerListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		JPanel description = JFrame1stExemple.getCustomerDescription(this.customer);
+		JPanel description = FramePrincipale.getCustomerDescription(this.customer);
 	    
 	    JPanel action = createCustomerActionPanel();
 	    
@@ -95,15 +102,26 @@ public class CustomerListener implements ActionListener {
 	    else if (this.customer.getStatus().contentEquals("on-a-ride")) {
 	    	JLabel etat = new JLabel("Nous esperons que vous profitez de votre voyage :)");
 	    	etat.setPreferredSize(new Dimension(400,40));
-	    	etat.setBackground(Color.blue);
+	    	action.setBackground(Color.blue);
 	    	action.add(etat);
 	    }
-	    
-	    
-	    
-	    
-	    
-	    
+	    else if (this.customer.getStatus().contentEquals("asked_eval")) {
+	    	JLabel etat = new JLabel("Le trajet est terminé ! Pouvez vous l'evaluer ?");
+	    	JButton skip = new JButton("Skip >>");
+	    	JButton submit = new JButton("Submit");
+	    	JComboBox<String> eval = new JComboBox<String>();
+	    	eval.addItem("Parfait");
+	    	eval.addItem("Très bien");
+	    	eval.addItem("Bien");
+	    	eval.addItem("Decevant");
+	    	eval.addItem("Horrible");
+	    	submit.addActionListener(new Eval(this.frame, this.customer, eval));
+	    	skip.addActionListener(new SetFree(this.frame, this.customer));
+	    	action.add(etat);
+	    	action.add(eval);
+	    	action.add(submit);
+	    	action.add(skip);
+	    }
 	    return action;
 	}
 
